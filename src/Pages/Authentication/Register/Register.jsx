@@ -1,12 +1,14 @@
 import axios from "axios";
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useLocation, useNavigate,Link } from "react-router";
 import useAuth from "../../../hooks/useAuth/useAuth";
-import useAxios from "../../../hooks/useAxios/useAxios";
+
 
 
 const Register = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const {createUser,updateUser} =useAuth()
   const { districts, upzillas } = useLoaderData();
@@ -38,6 +40,7 @@ const Register = () => {
      createUser(email,password)
      .then(result=>{
         if(result.user){
+     navigate(location.state || '/')
     const profileImage = data.Image[0]
     const formData = new FormData()
     formData.append('image',profileImage)
@@ -205,6 +208,7 @@ const Register = () => {
               <button type="submit" className="btn btn-neutral mt-4">Register</button>
             </fieldset>
           </form>
+          <p>Already have an account? <Link to='/login'><span className="text-green-300 underline">Login</span></Link></p>
         </div>
       </div>
     </div>

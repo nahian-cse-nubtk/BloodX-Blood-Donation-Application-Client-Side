@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import RootLayout from '../Layouts/RootLayout/RootLayout';
 import Home from '../Pages/ApplicationPages/Home/Home';
 import Register from '../Pages/Authentication/Register/Register';
+import Login from '../Pages/Authentication/Login/Login';
 
 const Router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
                 return { districts, upzillas };
                 },
                 hydrateFallbackElement: <p>Loading...</p>
+            },
+            {
+                path: '/login',
+                Component: Login
             }
         ]
     }
