@@ -10,7 +10,7 @@ const useRole = () => {
         queryKey: ['user-role','user-status',user?.email],
         queryFn: async()=>{
             const res = await axiosSecure.get(`/users/${user?.email}/role`)
-            return {role:res.data?.role || 'Doner',status:res.data?.status || 'Blocked'}
+            return {role:res.data?.role || 'Donor',status:res.data?.status || 'Blocked'}
 
         }
     })

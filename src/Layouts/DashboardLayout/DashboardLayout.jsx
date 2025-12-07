@@ -5,6 +5,7 @@ import { RiDashboard3Line } from "react-icons/ri";
 import useRole from '../../hooks/useRole/useRole';
 import { IoGitPullRequest } from "react-icons/io5";
 import { ToastContainer } from 'react-toastify';
+import { TbGitPullRequestDraft } from "react-icons/tb";
 
 const DashboardLayout = () => {
     const {userInfo} =useRole()
@@ -56,12 +57,19 @@ const DashboardLayout = () => {
         </li>
         {/* Doner specific links */}
         {
-            userInfo.role==='Doner'&&<>
+            userInfo.role==='Donor'&&<>
             <li>
           <NavLink to='/dashboard/createDonationRequest' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create dontaion request">
             {/* profile icon */}
             <IoGitPullRequest />
             <span className="is-drawer-close:hidden">Create dontaion request</span>
+          </NavLink>
+        </li>
+            <li>
+          <NavLink to='/dashboard/myDonationRequest' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My dontaion request">
+            {/* profile icon */}
+            <TbGitPullRequestDraft />
+            <span className="is-drawer-close:hidden">My dontaion request</span>
           </NavLink>
         </li>
             </>

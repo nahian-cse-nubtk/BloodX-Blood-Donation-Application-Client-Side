@@ -9,6 +9,7 @@ import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 import DashBoardHome from '../Pages/DashboardPages/DashboardHome/DashBoardHome';
 import Profile from '../Pages/DashboardPages/Profile/Profile';
 import CreateDonataionRequest from '../Pages/DashboardPages/CreateDonationRequest/CreateDonataionRequest';
+import MyDonationRequest from '../Pages/DashboardPages/MyDonationRequest/MyDonationRequest';
 
 const Router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const Router = createBrowserRouter([
                 return { districts, upzillas };
                 },
                 hydrateFallbackElement: <p>Loading...</p>
+            },
+            {
+                path:'myDonationRequest',
+                element: <PrivateRoute><MyDonationRequest></MyDonationRequest></PrivateRoute>
             }
         ]
     }
