@@ -10,6 +10,7 @@ import DashBoardHome from '../Pages/DashboardPages/DashboardHome/DashBoardHome';
 import Profile from '../Pages/DashboardPages/Profile/Profile';
 import CreateDonataionRequest from '../Pages/DashboardPages/CreateDonationRequest/CreateDonataionRequest';
 import MyDonationRequest from '../Pages/DashboardPages/MyDonationRequest/MyDonationRequest';
+import DonationRequestEdit from '../Pages/DashboardPages/DonationRequestEdit/DonationRequestEdit';
 
 const Router = createBrowserRouter([
     {
@@ -75,6 +76,19 @@ const Router = createBrowserRouter([
             {
                 path:'myDonationRequest',
                 element: <PrivateRoute><MyDonationRequest></MyDonationRequest></PrivateRoute>
+            },
+            {
+                path: 'donationRequestEdit/:id',
+                element: <PrivateRoute><DonationRequestEdit></DonationRequestEdit></PrivateRoute>,
+                loader: async () => {
+                const [districts, upzillas] = await Promise.all([
+                fetch('/district.json').then(res => res.json()),
+                fetch('/upzilla.json').then(res => res.json()),
+                ]);
+
+                return { districts, upzillas };
+                },
+                hydrateFallbackElement: <p>Loading...</p>
             }
         ]
     }

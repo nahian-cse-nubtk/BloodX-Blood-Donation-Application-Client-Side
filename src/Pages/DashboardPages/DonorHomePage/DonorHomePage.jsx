@@ -4,12 +4,13 @@ import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { FaCalendarAlt, FaClock, FaTint, FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 const DonorHomePage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: requests = [], isPending } = useQuery({
+  const { data: requests = [], isPending,refetch } = useQuery({
     queryKey: ["donor-requests", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/donationRequests/${user?.email}`);
@@ -21,6 +22,34 @@ const DonorHomePage = () => {
 
   if (isPending) return <p className="text-center py-10">Loading...</p>;
 
+  const handleDeleteRequest =(id)=>{
+       axiosSecure.delete(`/donationRequests/${id}/request`)
+       .then(res=>{
+        if(res.data.deletedCount){
+            refetch();
+            toast('Delete successful')
+        }
+       })
+  }
+  const handleUpdateStatus = (id,status)=>{
+    const statusInfo ={
+        donationStatus: status
+    }
+    axiosSecure.patch(`/donationRequests/${id}/status`,statusInfo)
+    .then(res=>{
+        if(res.data.modifiedCount){
+            refetch()
+            toast('Status Updated')
+        }
+    })
+
+  }
+  const handleStatusDone=(id)=>{
+    handleUpdateStatus(id,'done')
+  }
+  const handleStatusCancel=(id)=>{
+    handleUpdateStatus(id,'cancel')
+  }
   return (
     <div className="p-6 space-y-8">
 
@@ -114,21 +143,21 @@ const DonorHomePage = () => {
                       {/* Done / Cancel only when inprogress */}
                       {req.donationStatus === "inprogress" && (
                         <>
-                          <button className="btn btn-success btn-xs">Done</button>
-                          <button className="btn btn-error btn-xs">Cancel</button>
+                          <button onClick={()=>handleStatusDone(req._id)} className="btn btn-success btn-xs">Done</button>
+                          <button onClick={()=>handleStatusCancel(req._id)} className="btn btn-error btn-xs">Cancel</button>
                         </>
                       )}
 
                       {/* Edit */}
                       <Link
-                        to={`/dashboard/edit-request/${req._id}`}
+                        to={`/dashboard/donationRequestEdit/${req._id}`}
                         className="btn btn-info btn-xs flex items-center gap-1"
                       >
                         <FaEdit /> Edit
                       </Link>
 
                       {/* Delete */}
-                      <button className="btn btn-warning btn-xs flex items-center gap-1">
+                      <button onClick={()=>handleDeleteRequest(req._id)} className="btn btn-warning btn-xs flex items-center gap-1">
                         <FaTrash /> Delete
                       </button>
 
