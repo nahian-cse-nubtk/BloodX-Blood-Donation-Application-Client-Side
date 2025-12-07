@@ -9,6 +9,7 @@ const Navbar = () => {
   const {user,signOutUser} = useAuth()
   const links=<>
    <li><NavLink to='/'>Home</NavLink></li>
+   <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
   </>
   const handleSignOut =()=>{
         signOutUser()
