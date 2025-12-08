@@ -94,6 +94,17 @@ const DashboardLayout = () => {
             </li>
             </>
         }
+        {
+            userInfo.role==='Volunteer'&&<>
+            <li>
+            <NavLink to='/dashboard/allRequests' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Blood Donation Requests">
+
+            <LuGitPullRequestCreateArrow />
+            <span className="is-drawer-close:hidden">All Blood Donation Request</span>
+          </NavLink>
+            </li>
+            </>
+        }
       </ul>
     </div>
   </div>

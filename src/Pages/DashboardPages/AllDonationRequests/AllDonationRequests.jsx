@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
-
+import { FaAngleDown } from "react-icons/fa";
 import {
   FaCalendarAlt,
   FaClock,
@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 
 const AllDonationRequests = () => {
   const axiosSecure = useAxiosSecure();
+  const [donationStatus, setDonationStatus] = useState("");
 
   const [singlePage, setPage] = useState(0);
   const {
@@ -22,10 +23,12 @@ const AllDonationRequests = () => {
     isPending,
     refetch,
   } = useQuery({
-    queryKey: ["donar-requests-info", singlePage],
+    queryKey: ["donar-requests-info", singlePage, donationStatus],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `donationRequests?skip=${singlePage * 5}&limit=5`
+        `donationRequests?donationStatus=${donationStatus}&skip=${
+          singlePage * 5
+        }&limit=5`
       );
       return res.data;
     },
@@ -57,19 +60,49 @@ const AllDonationRequests = () => {
         }
       });
   };
-  const handleStatusDone = (id) => {
-    handleUpdateStatus(id, "done");
-  };
-  const handleStatusCancel = (id) => {
-    handleUpdateStatus(id, "cancel");
-  };
+  
   return (
     <div className="p-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
       {recentRequests.length > 0 && (
         <div className="bg-white rounded-2xl shadow-xl p-6">
-          <h2 className="text-xl font-semibold mb-4">Your Donation Requests</h2>
+          <h2 className="text-xl font-semibold mb-4">All Donation Requests</h2>
+          <div className="flex justify-end my-4">
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn m-1">
+                Filtered By Donation Status <FaAngleDown />
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              >
+                <li>
+                  <button onClick={() => setDonationStatus("pending")}>
+                    Pending
+                  </button>
+                </li>
 
+                <li>
+                  <button onClick={() => setDonationStatus("inprogress")}>
+                    Inprogress
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setDonationStatus("done")}>
+                    Done
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setDonationStatus("cancel")}>
+                    Cancelled
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setDonationStatus("")}>All</button>
+                </li>
+              </ul>
+            </div>
+          </div>
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
               <thead className="bg-gray-100">
@@ -81,6 +114,7 @@ const AllDonationRequests = () => {
                   <th>Blood</th>
                   <th>Status</th>
                   <th>Donor Info</th>
+                  <th>Change Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -141,27 +175,58 @@ const AllDonationRequests = () => {
                         <p className="text-gray-400">N/A</p>
                       )}
                     </td>
+                    <td>
+                      <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn ">
+                          Change Status <FaAngleDown />
+                        </div>
+                        <ul
+                          tabIndex="-1"
+                          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                        >
+                          <li>
+                            <button
+                              onClick={() =>
+                                handleUpdateStatus(req._id, "pending")
+                              }
+                            >
+                              Pending
+                            </button>
+                          </li>
+
+                          <li>
+                            <button
+                              onClick={() =>
+                                handleUpdateStatus(req._id, "inprogress")
+                              }
+                            >
+                              Inprogress
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() =>
+                                handleUpdateStatus(req._id, "done")
+                              }
+                            >
+                              Done
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() =>
+                                handleUpdateStatus(req._id, "cancel")
+                              }
+                            >
+                              Cancelled
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
 
                     {/* ACTION BUTTONS */}
                     <td className="flex gap-2">
-                      {/* Done / Cancel only when inprogress */}
-                      {req.donationStatus === "inprogress" && (
-                        <>
-                          <button
-                            onClick={() => handleStatusDone(req._id)}
-                            className="btn btn-success btn-xs"
-                          >
-                            Done
-                          </button>
-                          <button
-                            onClick={() => handleStatusCancel(req._id)}
-                            className="btn btn-error btn-xs"
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      )}
-
                       {/* Edit */}
                       <Link
                         to={`/dashboard/donationRequestEdit/${req._id}`}
@@ -198,14 +263,14 @@ const AllDonationRequests = () => {
       {recentRequests.length > 0 && (
         <div className="text-right flex justify-center">
           <button
-             disabled={singlePage===0}
+            disabled={singlePage === 0}
             onClick={() => setPage((p) => Math.max(p - 1, 0))}
             className="btn bg-red-600 hover:bg-red-700 text-white mr-3"
           >
             Prev
           </button>
           <button
-          disabled={singlePage===totalPages-1}
+            disabled={singlePage === totalPages - 1}
             onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
             className="btn bg-red-600 hover:bg-red-700 text-white"
           >

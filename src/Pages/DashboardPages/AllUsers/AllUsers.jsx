@@ -163,7 +163,7 @@ const AllUsers = () => {
                     <td>
                       <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn m-1">
-                          Filtered By Status <FaAngleDown />
+                          Manage Role <FaAngleDown />
                         </div>
                         <ul
                           tabIndex="-1"
