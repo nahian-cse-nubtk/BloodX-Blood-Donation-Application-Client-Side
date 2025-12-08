@@ -6,6 +6,8 @@ import useRole from '../../hooks/useRole/useRole';
 import { IoGitPullRequest } from "react-icons/io5";
 import { ToastContainer } from 'react-toastify';
 import { TbGitPullRequestDraft } from "react-icons/tb";
+import { FaUsers } from 'react-icons/fa';
+import { LuGitPullRequestCreateArrow } from "react-icons/lu";
 
 const DashboardLayout = () => {
     const {userInfo} =useRole()
@@ -72,6 +74,24 @@ const DashboardLayout = () => {
             <span className="is-drawer-close:hidden">My dontaion request</span>
           </NavLink>
         </li>
+            </>
+        }
+        {
+            userInfo.role==='Admin'&&<>
+            <li>
+                <NavLink to='/dashboard/allUsers' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Users">
+            {/* profile icon */}
+            <FaUsers />
+            <span className="is-drawer-close:hidden">All Users</span>
+          </NavLink>
+            </li>
+            <li>
+            <NavLink to='/dashboard/allDonationRequests' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Donation Requests">
+
+            <LuGitPullRequestCreateArrow />
+            <span className="is-drawer-close:hidden">All Donation Request</span>
+          </NavLink>
+            </li>
             </>
         }
       </ul>

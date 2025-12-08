@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData, useLocation, useNavigate,Link } from "react-router";
 import useAuth from "../../../hooks/useAuth/useAuth";
+import { toast } from "react-toastify";
 
 
 
@@ -40,7 +41,9 @@ const Register = () => {
      createUser(email,password)
      .then(result=>{
         if(result.user){
+     toast("Login successfull")
      navigate(location.state || '/')
+
     const profileImage = data.Image[0]
     const formData = new FormData()
     formData.append('image',profileImage)

@@ -11,6 +11,9 @@ import Profile from '../Pages/DashboardPages/Profile/Profile';
 import CreateDonataionRequest from '../Pages/DashboardPages/CreateDonationRequest/CreateDonataionRequest';
 import MyDonationRequest from '../Pages/DashboardPages/MyDonationRequest/MyDonationRequest';
 import DonationRequestEdit from '../Pages/DashboardPages/DonationRequestEdit/DonationRequestEdit';
+import AllUsers from '../Pages/DashboardPages/AllUsers/AllUsers';
+import AdminRoute from './AdminRoute/AdminRoute';
+import AllDonationRequests from '../Pages/DashboardPages/AllDonationRequests/AllDonationRequests';
 
 const Router = createBrowserRouter([
     {
@@ -89,6 +92,14 @@ const Router = createBrowserRouter([
                 return { districts, upzillas };
                 },
                 hydrateFallbackElement: <p>Loading...</p>
+            },
+            {
+                path:'allUsers',
+                element: <PrivateRoute><AdminRoute><AllUsers></AllUsers></AdminRoute></PrivateRoute>
+            },
+            {
+                path:'allDonationRequests',
+                element: <PrivateRoute><AdminRoute><AllDonationRequests></AllDonationRequests></AdminRoute></PrivateRoute>
             }
         ]
     }

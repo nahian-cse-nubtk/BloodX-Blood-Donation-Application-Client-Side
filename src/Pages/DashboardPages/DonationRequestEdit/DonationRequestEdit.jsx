@@ -29,8 +29,8 @@ const DonationRequestEdit = () =>{
 
   const { register, handleSubmit, control,reset } = useForm({
     defaultValues: {
-      requesterName: user?.displayName,
-      requesterEmail: user?.email,
+      requesterName: donationReq.requesterName,
+      requesterEmail: donationReq.requesterEmail,
       bloodGroup: donationReq.bloodGroup,
       donationDate: donationReq.donationDate,
       donationTime: donationReq.donationTime,
@@ -66,13 +66,13 @@ const DonationRequestEdit = () =>{
     })
 
   };
- 
+
 
   useEffect(() => {
   if (donationReq) {
     reset({
-      requesterName: user?.displayName,
-      requesterEmail: user?.email,
+      requesterName: donationReq.requesterName,
+      requesterEmail: donationReq.requesterEmail,
       bloodGroup: donationReq.bloodGroup,
       donationDate: donationReq.donationDate,
       donationTime: donationReq.donationTime,
