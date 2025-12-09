@@ -28,7 +28,7 @@ const DonationCard = ({ request }) => {
             <FaMapMarkerAlt />
           </span>
           <p className="font-medium">
-            {request.district}, {request.upazila}
+            {request.recipientDistrict}, {request.recipientUpazila}
           </p>
         </div>
 
