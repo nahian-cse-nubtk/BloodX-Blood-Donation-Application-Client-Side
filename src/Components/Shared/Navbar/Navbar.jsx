@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth/useAuth";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 import logo from '/Logo.png'
+import { IoSearch } from "react-icons/io5";
 
 const Navbar = () => {
 
@@ -11,6 +12,7 @@ const Navbar = () => {
   const links=<>
    <li><NavLink to='/'>Home</NavLink></li>
    <li><NavLink to='/requests'>All Request</NavLink></li>
+   <li><NavLink to='/searchDonor'><IoSearch />Search Donor</NavLink></li>
    <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
   </>
   const handleSignOut =()=>{

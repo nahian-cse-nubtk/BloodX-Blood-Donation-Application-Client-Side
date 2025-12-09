@@ -17,6 +17,8 @@ import AllDonationRequests from '../Pages/DashboardPages/AllDonationRequests/All
 import VolunteerRoute from './VolunteerRoute/VolunteerRouter';
 import AllBloodDonationRequests from '../Pages/DashboardPages/AllBloodDonationRequests/AllBloodDonationRequests';
 import DonationRequests from '../Pages/ApplicationPages/DonationRequests/DonationRequests';
+import DonationDetails from '../Pages/DonationDetails/DonationDetails';
+import SearchDonor from '../Pages/ApplicationPages/SearchDonor/SearchDonor';
 
 const Router = createBrowserRouter([
     {
@@ -46,6 +48,19 @@ const Router = createBrowserRouter([
             {
                 path: '/requests',
                 Component: DonationRequests
+            },
+            {
+                path:'/searchDonor',
+                Component: SearchDonor,
+                loader: async () => {
+                const [districts, upzillas] = await Promise.all([
+                fetch('/district.json').then(res => res.json()),
+                fetch('/upzilla.json').then(res => res.json()),
+                ]);
+
+                return { districts, upzillas };
+                },
+                hydrateFallbackElement: <p>Loading...</p>
             }
         ]
     },
@@ -113,6 +128,10 @@ const Router = createBrowserRouter([
                 element: <PrivateRoute><VolunteerRoute><AllBloodDonationRequests></AllBloodDonationRequests></VolunteerRoute></PrivateRoute>
             }
         ]
+    },
+    {
+        path: '/donationDetails/:id',
+        element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>
     }
 ])
 

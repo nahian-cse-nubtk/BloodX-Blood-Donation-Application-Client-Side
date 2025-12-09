@@ -1,4 +1,5 @@
 import { FaCalendarAlt, FaClock, FaTint, FaMapMarkerAlt, FaUser } from "react-icons/fa";
+import { Link } from "react-router";
 
 const DonationCard = ({ request }) => {
   return (
@@ -60,9 +61,9 @@ const DonationCard = ({ request }) => {
 
       {/* View Button */}
       <div className="mt-4">
-        <button className="btn w-full bg-red-600 hover:bg-red-700 text-white rounded-xl">
+        <Link to={`/donationDetails/${request._id}`} className="btn w-full bg-red-600 hover:bg-red-700 text-white rounded-xl">
           View Details
-        </button>
+        </Link>
       </div>
     </div>
   );
