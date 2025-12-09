@@ -7,7 +7,7 @@ const DonorCard = ({ donor }) => {
       {/* Top Section */}
       <div className="flex items-center gap-4">
         <img
-          src={donor.avatar}
+          src={donor.Image}
           alt="Donor Avatar"
           className="w-16 h-16 rounded-full border-2 border-red-300 object-cover"
         />
@@ -54,7 +54,7 @@ const DonorCard = ({ donor }) => {
           </div>
           <div>
             <p className="text-sm text-gray-500">Upazila</p>
-            <p className="font-semibold text-gray-800">{donor.upazila}</p>
+            <p className="font-semibold text-gray-800">{donor.upzila}</p>
           </div>
         </div>
       </div>

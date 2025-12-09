@@ -84,7 +84,9 @@ const Register = () => {
 
   return (
     <div>
-      <div className=" mx-auto my-10 card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <h1 className="text-6xl font-bold text-red-400 text-center my-10">Welcome, Register As a Donor</h1>
+      <div className=" mx-auto  card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl shadow-red-100">
+
         <div className="card-body">
           <form onSubmit={handleSubmit(handleRegister)}>
             <fieldset className="fieldset">
@@ -113,7 +115,7 @@ const Register = () => {
               <select
                 {...register("bloodGroup", { required: true })}
                 defaultValue="Pick A Blood Group"
-                className="select select-secondary"
+                className="select "
               >
                 <option>Pick your blood group</option>
                 <option value="A+">A+</option>
@@ -208,10 +210,10 @@ const Register = () => {
                 </p>
               }
 
-              <button type="submit" className="btn btn-neutral mt-4">Register</button>
+              <button type="submit" className="btn bg-red-600 text-white mt-4">Register</button>
             </fieldset>
           </form>
-          <p>Already have an account? <Link to='/login'><span className="text-green-300 underline">Login</span></Link></p>
+          <p>Already have an account? <Link to='/authLayot/login'><span className="text-red-400 underline">Login</span></Link></p>
         </div>
       </div>
     </div>

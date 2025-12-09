@@ -5,9 +5,10 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
 
 import DonorCard from '../../../Components/DonorCard/DonorCard';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 const SearchDonor = () =>{
     const axiosSecure =useAxiosSecure()
-    const [searchText, setSearchText] = useState(null)
+    const [donors, setDonors] = useState([])
 
   const { districts, upzillas } = useLoaderData();
 
@@ -25,18 +26,27 @@ const SearchDonor = () =>{
 
     return upzillas.filter((u) => u.district_id === found.id);
   };
-  const {}=useQuery({
-    queryKey:['donor',searchText],
-    queryFn: async()=>{
-        const res = await axiosSecure.get(``)
-    }
-  })
+//   const {data:donors=[]}=useQuery({
+//     queryKey:['donor',searchText],
+//     enabled: !!searchText,
+//     queryFn: async()=>{
+//         const res = await axiosSecure.get(`/donorsData?serachText${searchText}`)
+//         return res.data;
+//     }
+//   })
+
   const onSubmit = (data) => {
-   setSearchText(data)
+   axiosSecure.post('/donorsData',data)
+   .then(res=>{
+    if(res.data.length===0){
+    toast('Data Not Found')
+    }
+    setDonors(res.data)
+   })
 
   };
 
-
+ console.log(donors)
   return (
     <div className="p-6">
       <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl shadow-xl rounded-2xl p-8 border border-red-50">
@@ -68,7 +78,7 @@ const SearchDonor = () =>{
           <div>
             <label className="font-semibold mb-1 block">Select Upazila</label>
             <select
-              {...register("upazila", { required: true })}
+              {...register("upzilla", { required: true })}
               className="select select-bordered w-full"
             >
               <option value="">Select Upazila</option>
@@ -105,9 +115,14 @@ const SearchDonor = () =>{
 
         </form>
       </div>
-      <div>
-        {/* <DonorCard></DonorCard> */}
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-7 my-10'>
+        {
+            donors.length !==0&&(
+                donors.map(donor=><DonorCard donor={donor}></DonorCard>)
+            )
+        }
       </div>
+
     </div>
   );
 }

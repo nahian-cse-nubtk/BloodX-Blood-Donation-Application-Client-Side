@@ -19,6 +19,7 @@ import AllBloodDonationRequests from '../Pages/DashboardPages/AllBloodDonationRe
 import DonationRequests from '../Pages/ApplicationPages/DonationRequests/DonationRequests';
 import DonationDetails from '../Pages/DonationDetails/DonationDetails';
 import SearchDonor from '../Pages/ApplicationPages/SearchDonor/SearchDonor';
+import AuthLayout from '../Layouts/AuthLayout/AuthLayout';
 
 const Router = createBrowserRouter([
     {
@@ -28,23 +29,8 @@ const Router = createBrowserRouter([
             {
                 index: true, Component: Home
             },
-            {
-                path: '/register',
-                Component:Register,
-                loader: async () => {
-                const [districts, upzillas] = await Promise.all([
-                fetch('/district.json').then(res => res.json()),
-                fetch('/upzilla.json').then(res => res.json()),
-                ]);
 
-                return { districts, upzillas };
-                },
-                hydrateFallbackElement: <p>Loading...</p>
-            },
-            {
-                path: '/login',
-                Component: Login
-            },
+
             {
                 path: '/requests',
                 Component: DonationRequests
@@ -132,6 +118,29 @@ const Router = createBrowserRouter([
     {
         path: '/donationDetails/:id',
         element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>
+    },
+    {
+        path:'/authLayout',
+        Component: AuthLayout,
+        children:[
+            {
+                path: 'login',
+                Component: Login
+            },
+            {
+                path: 'register',
+                Component:Register,
+                loader: async () => {
+                const [districts, upzillas] = await Promise.all([
+                fetch('/district.json').then(res => res.json()),
+                fetch('/upzilla.json').then(res => res.json()),
+                ]);
+
+                return { districts, upzillas };
+                },
+                hydrateFallbackElement: <p>Loading...</p>
+            }
+        ]
     }
 ])
 

@@ -25,7 +25,8 @@ const Login = () => {
     }
   return (
     <div>
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <h1 className="text-6xl font-bold text-red-400 text-center my-10">Welcome Back <br /><span className="text-4xl">Login Now!</span></h1>
+      <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl shadow-red-100">
         <div className="card-body">
          <form onSubmit={handleSubmit(handleLogin)}>
              <fieldset className="fieldset">
@@ -44,10 +45,10 @@ const Login = () => {
                 error&& <p className="text-red-400">Invalid email and password</p>
               }
             </div>
-            <button type="submit" className="btn btn-neutral mt-4">Login</button>
+            <button type="submit" className="btn bg-red-600 text-white mt-4">Login</button>
           </fieldset>
          </form>
-         <p>Don't have an account? <Link to='/register'><span className="text-green-300 underline">Register</span></Link></p>
+         <p>Don't have an account? <Link to='/authLayot/register'><span className="text-red-400 underline">Register</span></Link></p>
         </div>
       </div>
     </div>
