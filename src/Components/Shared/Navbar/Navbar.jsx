@@ -3,12 +3,14 @@ import { NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
+import logo from '/Logo.png'
 
 const Navbar = () => {
 
   const {user,signOutUser} = useAuth()
   const links=<>
    <li><NavLink to='/'>Home</NavLink></li>
+   <li><NavLink to='/requests'>All Request</NavLink></li>
    <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
   </>
   const handleSignOut =()=>{
@@ -18,7 +20,7 @@ const Navbar = () => {
         })
   }
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm md:px-7">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +47,11 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        {/* logo here */}
+        <img src={logo} alt="BloodX Logo" className="h-[70px]"/>
+        <div>
+
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

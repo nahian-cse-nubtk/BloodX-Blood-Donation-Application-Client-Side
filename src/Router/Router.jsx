@@ -16,6 +16,7 @@ import AdminRoute from './AdminRoute/AdminRoute';
 import AllDonationRequests from '../Pages/DashboardPages/AllDonationRequests/AllDonationRequests';
 import VolunteerRoute from './VolunteerRoute/VolunteerRouter';
 import AllBloodDonationRequests from '../Pages/DashboardPages/AllBloodDonationRequests/AllBloodDonationRequests';
+import DonationRequests from '../Pages/ApplicationPages/DonationRequests/DonationRequests';
 
 const Router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const Router = createBrowserRouter([
             {
                 path: '/login',
                 Component: Login
+            },
+            {
+                path: '/requests',
+                Component: DonationRequests
             }
         ]
     },
