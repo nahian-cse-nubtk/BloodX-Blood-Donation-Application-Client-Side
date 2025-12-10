@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { FaAngleDown } from "react-icons/fa";
+import Loading from "../../../Components/Loading/Loading";
 
 const MyDonationRequest = () => {
   const [donationStatus, setDonationStatus] = useState("")
@@ -38,7 +39,7 @@ const MyDonationRequest = () => {
   const totalRequests = requests?.totalRequests;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
 
-  if (isPending) return <p className="text-center py-10">Loading...</p>;
+  if (isPending) return <Loading></Loading>
 
   const handleDeleteRequest = (id) => {
     axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {

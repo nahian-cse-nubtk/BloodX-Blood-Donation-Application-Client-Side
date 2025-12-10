@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 
 import { toast } from "react-toastify";
 import { FaAngleDown } from "react-icons/fa";
+import Loading from "../../../Components/Loading/Loading";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -27,7 +28,7 @@ const AllUsers = () => {
   const totalUsers = users?.totalUsers;
   const totalPages = Math.ceil(Number(totalUsers) / 5);
 
-  if (isPending) return <p className="text-center py-10">Loading...</p>;
+
 
   const handleUpdateStatus = (id, status) => {
     const statusInfo = {
@@ -73,6 +74,7 @@ const AllUsers = () => {
  const handleRemoveVolunteer= (id)=>{
        handleUpdateRole(id,'Donor')
  }
+ if (isPending) return <Loading></Loading>
   return (
     <div className="p-6 space-y-8">
       {recentUsers.length === 0 && (

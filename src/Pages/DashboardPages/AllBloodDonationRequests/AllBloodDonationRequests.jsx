@@ -37,7 +37,7 @@ const AllBloodDonationRequests = () => {
   const totalRequests = requests?.totalData;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
   console.log(totalPages);
-  if (isPending) return <p className="text-center py-10">Loading...</p>;
+  if (isPending) return <Loading></Loading>
 
   const handleDeleteRequest = (id) => {
     axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
@@ -60,7 +60,7 @@ const AllBloodDonationRequests = () => {
         }
       });
   };
-  
+
 
   return (
     <div className="p-6 space-y-8">

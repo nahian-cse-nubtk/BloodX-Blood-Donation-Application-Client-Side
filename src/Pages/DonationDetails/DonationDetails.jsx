@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
 import useRole from "../../hooks/useRole/useRole";
+import Loading from "../../Components/Loading/Loading";
 
 const DonationDetails = () => {
   const {userInfo} =useRole()
@@ -27,7 +28,7 @@ const DonationDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: request = {}, refetch } = useQuery({
+  const { data: request = {},isPending, refetch } = useQuery({
     queryKey: ["donation-request", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/donationRequests/${id}/request`);
@@ -60,6 +61,9 @@ const DonationDetails = () => {
         }
       });
   };
+  if(isPending){
+    return <Loading></Loading>
+  }
   return (
     <div className="relative max-w-4xl mx-auto p-6 my-10 bg-white shadow-xl rounded-2xl border border-red-200">
       <button

@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import { useLoaderData } from 'react-router';
 import { toast } from 'react-toastify';
+import Loading from '../../../Components/Loading/Loading';
 const Profile = () => {
     const axiosSecure = useAxiosSecure()
     const {user} =useAuth()
@@ -60,7 +61,7 @@ useEffect(() => {
     ...data,
     _id: userData._id,
   };
-  
+
     axiosSecure.patch('/users',updatedData)
     .then(res=>{
         console.log(res.data)
@@ -73,7 +74,7 @@ useEffect(() => {
 
   };
   if(isPending){
-    return <p>Loading...</p>
+    return <Loading></Loading>
   }
 
   return (

@@ -12,6 +12,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Loading from "../../../Components/Loading/Loading";
 
 const AllDonationRequests = () => {
   const axiosSecure = useAxiosSecure();
@@ -36,8 +37,8 @@ const AllDonationRequests = () => {
   const recentRequests = requests?.result;
   const totalRequests = requests?.totalData;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
-  console.log(totalPages);
-  if (isPending) return <p className="text-center py-10">Loading...</p>;
+  
+  if (isPending) return <Loading></Loading>
 
   const handleDeleteRequest = (id) => {
     axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
@@ -60,7 +61,7 @@ const AllDonationRequests = () => {
         }
       });
   };
-  
+
   return (
     <div className="p-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}

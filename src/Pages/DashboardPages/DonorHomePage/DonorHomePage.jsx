@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { FaCalendarAlt, FaClock, FaTint, FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import Loading from '../../../Components/Loading/Loading';
 
 const DonorHomePage = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,7 +21,7 @@ const DonorHomePage = () => {
  console.log(requests)
   const recentRequests = requests.slice(0, 3);
 
-  if (isPending) return <p className="text-center py-10">Loading...</p>;
+  if (isPending) return <Loading></Loading>
 
   const handleDeleteRequest =(id)=>{
        axiosSecure.delete(`/donationRequests/${id}/request`)

@@ -6,6 +6,7 @@ import { useLoaderData, useNavigate, useParams } from "react-router";
 import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import Loading from '../../../Components/Loading/Loading';
 
 const DonationRequestEdit = () =>{
     const navigate = useNavigate()
@@ -88,7 +89,7 @@ const DonationRequestEdit = () =>{
 
 
   if(isPending){
-    return <p>Loading...</p>
+    return <Loading></Loading>
   }
   return (
     <div className="p-6">

@@ -22,6 +22,7 @@ import SearchDonor from '../Pages/ApplicationPages/SearchDonor/SearchDonor';
 import AuthLayout from '../Layouts/AuthLayout/AuthLayout';
 import PageNotFound from '../Components/PageNotFound/PageNotFound';
 import AppNotFound from '../Components/AppNotFound/AppNotFound';
+import Loading from '../Components/Loading/Loading';
 
 
 const Router = createBrowserRouter([
@@ -49,7 +50,7 @@ const Router = createBrowserRouter([
 
                 return { districts, upzillas };
                 },
-                hydrateFallbackElement: <p>Loading...</p>
+                hydrateFallbackElement: <Loading></Loading>
             }
         ]
     },
@@ -72,7 +73,7 @@ const Router = createBrowserRouter([
 
                 return { districts, upzillas };
                 },
-                hydrateFallbackElement: <p>Loading...</p>
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: 'createDonationRequest',
@@ -85,7 +86,7 @@ const Router = createBrowserRouter([
 
                 return { districts, upzillas };
                 },
-                hydrateFallbackElement: <p>Loading...</p>
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path:'myDonationRequest',
@@ -102,7 +103,7 @@ const Router = createBrowserRouter([
 
                 return { districts, upzillas };
                 },
-                hydrateFallbackElement: <p>Loading...</p>
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path:'allUsers',
@@ -142,7 +143,7 @@ const Router = createBrowserRouter([
 
                 return { districts, upzillas };
                 },
-                hydrateFallbackElement: <p>Loading...</p>
+                hydrateFallbackElement: <Loading></Loading>
             }
         ]
     },
@@ -150,6 +151,7 @@ const Router = createBrowserRouter([
         path: '*',
         Component: PageNotFound
     }
+
 ])
 
 

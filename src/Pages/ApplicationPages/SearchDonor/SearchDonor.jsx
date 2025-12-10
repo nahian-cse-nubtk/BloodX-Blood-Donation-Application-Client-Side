@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router";
 import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
 
 import DonorCard from '../../../Components/DonorCard/DonorCard';
-import { useQuery } from '@tanstack/react-query';
+
 import { toast } from 'react-toastify';
 const SearchDonor = () =>{
     const axiosSecure =useAxiosSecure()
@@ -26,14 +26,7 @@ const SearchDonor = () =>{
 
     return upzillas.filter((u) => u.district_id === found.id);
   };
-//   const {data:donors=[]}=useQuery({
-//     queryKey:['donor',searchText],
-//     enabled: !!searchText,
-//     queryFn: async()=>{
-//         const res = await axiosSecure.get(`/donorsData?serachText${searchText}`)
-//         return res.data;
-//     }
-//   })
+
 
   const onSubmit = (data) => {
    axiosSecure.post('/donorsData',data)
