@@ -17,8 +17,10 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
+import useRole from "../../hooks/useRole/useRole";
 
 const DonationDetails = () => {
+  const {userInfo} =useRole()
   const { user } = useAuth();
   const modalRef = useRef();
   const axiosSecure = useAxiosSecure();
@@ -143,12 +145,19 @@ const DonationDetails = () => {
 
       {/* STATUS */}
       <div className="mt-6 flex justify-end">
-        <button
+        {
+          userInfo.role==='Donor'?<button
+          onClick={() => navigate('/requests')}
+          className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-lg font-medium transition shadow-sm"
+        >
+          <FaArrowLeft size={14} /> Back to All Requests
+        </button>:<button
           onClick={() => navigate(-1)}
           className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-lg font-medium transition shadow-sm"
         >
           <FaArrowLeft size={14} /> Back
         </button>
+        }
       </div>
 
       <div className="mt-5">

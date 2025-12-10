@@ -1,5 +1,6 @@
 import React from 'react';
 import useRole from '../../hooks/useRole/useRole';
+import ForbiddenAccess from '../../Components/ForbiddenAccess/ForbiddenAccess';
 
 const AdminRoute = ({children}) => {
     const {userInfo,isPending}= useRole()
@@ -11,7 +12,7 @@ const AdminRoute = ({children}) => {
         return children
     }
     else{
-        return <p>Access Forbidden</p>
+        return <ForbiddenAccess></ForbiddenAccess>
     }
 
 };

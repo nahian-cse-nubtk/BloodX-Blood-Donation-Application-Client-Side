@@ -20,6 +20,9 @@ import DonationRequests from '../Pages/ApplicationPages/DonationRequests/Donatio
 import DonationDetails from '../Pages/DonationDetails/DonationDetails';
 import SearchDonor from '../Pages/ApplicationPages/SearchDonor/SearchDonor';
 import AuthLayout from '../Layouts/AuthLayout/AuthLayout';
+import PageNotFound from '../Components/PageNotFound/PageNotFound';
+import AppNotFound from '../Components/AppNotFound/AppNotFound';
+
 
 const Router = createBrowserRouter([
     {
@@ -117,7 +120,8 @@ const Router = createBrowserRouter([
     },
     {
         path: '/donationDetails/:id',
-        element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>
+        element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>,
+        errorElement: <AppNotFound></AppNotFound>
     },
     {
         path:'/authLayout',
@@ -141,6 +145,10 @@ const Router = createBrowserRouter([
                 hydrateFallbackElement: <p>Loading...</p>
             }
         ]
+    },
+    {
+        path: '*',
+        Component: PageNotFound
     }
 ])
 
