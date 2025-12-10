@@ -26,6 +26,12 @@ const Navbar = () => {
           Search Donor
         </NavLink>
       </li>
+      <li className="hover:bg-red-500">
+        <NavLink to="/donateFund">
+          
+          Donate Fund
+        </NavLink>
+      </li>
 
     </>
   );

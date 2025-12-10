@@ -23,6 +23,9 @@ import AuthLayout from '../Layouts/AuthLayout/AuthLayout';
 import PageNotFound from '../Components/PageNotFound/PageNotFound';
 import AppNotFound from '../Components/AppNotFound/AppNotFound';
 import Loading from '../Components/Loading/Loading';
+import DonateFund from '../Pages/ApplicationPages/DonateFund/DonateFund';
+import PaymentSuccess from '../Pages/ApplicationPages/Payment/PaymentSuccess';
+import PaymentCancel from '../Pages/ApplicationPages/Payment/PaymentCancel/PaymentCancel';
 
 
 const Router = createBrowserRouter([
@@ -51,6 +54,18 @@ const Router = createBrowserRouter([
                 return { districts, upzillas };
                 },
                 hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: '/donateFund',
+                element: <PrivateRoute><DonateFund></DonateFund></PrivateRoute>
+            },
+            {
+                path:'/paymentSussess',
+                Component: PaymentSuccess
+            },
+            {
+                path:'/paymentCancel',
+                Component: PaymentCancel
             }
         ]
     },
