@@ -11,6 +11,7 @@ const PaymentSuccess = () => {
     const sessionId = searchParams.get('sessionId')
     console.log(sessionId)
     useEffect(()=>{
+        if(!sessionId) return
         axiosSecure.patch(`/payment-success?sessionId=${sessionId}`)
         .then(res=>{
             console.log(res.data.fundData)
@@ -18,9 +19,11 @@ const PaymentSuccess = () => {
         })
 
     },[sessionId])
+
     if(!donateData){
         return <Loading></Loading>
     }
+
     return (
         <div className="space-y-5 flex flex-col items-center justify-center my-10">
               <img className="h-70" src={successImage} alt="App Not Found" />
