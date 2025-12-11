@@ -149,19 +149,12 @@ const DonationDetails = () => {
 
       {/* STATUS */}
       <div className="mt-6 flex justify-end">
-        {
-          userInfo.role==='Donor'?<button
-          onClick={() => navigate('/requests')}
-          className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-lg font-medium transition shadow-sm"
-        >
-          <FaArrowLeft size={14} /> Back to All Requests
-        </button>:<button
+        <button
           onClick={() => navigate(-1)}
           className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-lg font-medium transition shadow-sm"
         >
           <FaArrowLeft size={14} /> Back
         </button>
-        }
       </div>
 
       <div className="mt-5">

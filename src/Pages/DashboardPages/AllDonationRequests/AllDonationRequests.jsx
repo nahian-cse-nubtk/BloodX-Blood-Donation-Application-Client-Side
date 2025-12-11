@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Loading from "../../../Components/Loading/Loading";
+import Swal from "sweetalert2";
 
 const AllDonationRequests = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,14 +38,30 @@ const AllDonationRequests = () => {
   const recentRequests = requests?.result;
   const totalRequests = requests?.totalData;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
-  
-  if (isPending) return <Loading></Loading>
+
+  if (isPending) return <Loading></Loading>;
 
   const handleDeleteRequest = (id) => {
-    axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
-      if (res.data.deletedCount) {
-        refetch();
-        toast("Delete successful");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
+          if (res.data.deletedCount) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "The request has been deleted.",
+              icon: "success",
+            });
+          }
+        });
       }
     });
   };
@@ -70,12 +87,16 @@ const AllDonationRequests = () => {
           <h2 className="text-xl font-semibold mb-4">All Donation Requests</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn bg-red-500 text-white m-1"
+              >
                 Filtered By Donation Status <FaAngleDown />
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
                   <button onClick={() => setDonationStatus("pending")}>
@@ -178,12 +199,16 @@ const AllDonationRequests = () => {
                     </td>
                     <td>
                       <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn ">
-                          Change Status <FaAngleDown />
+                        <div
+                          tabIndex={0}
+                          role="button"
+                          className="btn bg-red-500 text-white "
+                        >
+                          Change <FaAngleDown />
                         </div>
                         <ul
                           tabIndex="-1"
-                          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                          className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
                         >
                           <li>
                             <button
@@ -227,11 +252,11 @@ const AllDonationRequests = () => {
                     </td>
 
                     {/* ACTION BUTTONS */}
-                    <td className="flex gap-2">
+                    <td className="flex gap-2 my-5">
                       {/* Edit */}
                       <Link
                         to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn btn-info btn-xs flex items-center gap-1"
+                        className="btn   btn-md bg-red-500 text-white flex items-center gap-1"
                       >
                         <FaEdit /> Edit
                       </Link>
@@ -239,15 +264,15 @@ const AllDonationRequests = () => {
                       {/* Delete */}
                       <button
                         onClick={() => handleDeleteRequest(req._id)}
-                        className="btn btn-warning btn-xs flex items-center gap-1"
+                        className="btn bg-red-500 text-white btn-md flex items-center gap-1"
                       >
                         <FaTrash /> Delete
                       </button>
 
                       {/* View */}
                       <Link
-                        to={`/dashboard/request/${req._id}`}
-                        className="btn btn-neutral btn-xs flex items-center gap-1"
+                        to={`/donationDetails/${req._id}`}
+                        className="btn bg-red-500 text-white  btn-md flex items-center gap-1"
                       >
                         <FaEye /> View
                       </Link>

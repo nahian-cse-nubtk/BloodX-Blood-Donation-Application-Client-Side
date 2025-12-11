@@ -71,12 +71,12 @@ const AllBloodDonationRequests = () => {
           <h2 className="text-xl font-semibold mb-4">All Donation Requests</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
+              <div tabIndex={0} role="button" className="btn bg-red-500 text-white m-1">
                 Filtered By Donation Status <FaAngleDown />
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
                   <button onClick={() => setDonationStatus("pending")}>
@@ -117,7 +117,7 @@ const AllBloodDonationRequests = () => {
                   <th>Status</th>
                   <th>Donor Info</th>
                   <th>Change Donation Status</th>
-                  <th>Actions</th>
+
                 </tr>
               </thead>
 
@@ -180,12 +180,12 @@ const AllBloodDonationRequests = () => {
                     {/* update donation status */}
                     <td>
                       <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn ">
+                        <div tabIndex={0} role="button" className="btn bg-red-500 text-white ">
                           Change Status <FaAngleDown />
                         </div>
                         <ul
                           tabIndex="-1"
-                          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                          className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
                         >
                           <li>
                             <button
@@ -217,35 +217,7 @@ const AllBloodDonationRequests = () => {
                       </div>
                     </td>
 
-                    {/* ACTION BUTTONS */}
-                    <td className="flex gap-2 items-center justify-center">
 
-
-
-                      {/* Edit */}
-                      <Link
-                        to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn btn-info btn-xs flex items-center gap-1"
-                      >
-                        <FaEdit /> Edit
-                      </Link>
-
-                      {/* Delete */}
-                      <button
-                        onClick={() => handleDeleteRequest(req._id)}
-                        className="btn btn-warning btn-xs flex items-center gap-1"
-                      >
-                        <FaTrash /> Delete
-                      </button>
-
-                      {/* View */}
-                      <Link
-                        to={`/dashboard/request/${req._id}`}
-                        className="btn btn-neutral btn-xs flex items-center gap-1"
-                      >
-                        <FaEye /> View
-                      </Link>
-                    </td>
                   </tr>
                 ))}
               </tbody>

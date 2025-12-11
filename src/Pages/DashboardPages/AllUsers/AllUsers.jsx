@@ -88,12 +88,12 @@ const AllUsers = () => {
           <h2 className="text-2xl font-semibold mb-4">All Users</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
+              <div tabIndex={0} role="button" className="btn bg-red-500 text-white m-1">
                 Filtered By Status <FaAngleDown />
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
                   <button onClick={() => setStatus("Active")}>Active</button>
@@ -149,14 +149,14 @@ const AllUsers = () => {
                       {user.status === "Active" ? (
                         <button
                           onClick={() => handleStatusBlocked(user._id)}
-                          className="btn  btn-md"
+                          className="btn bg-red-500 text-white  btn-md"
                         >
                           Blocked
                         </button>
                       ) : (
                         <button
                           onClick={() => handleStatusActive(user._id)}
-                          className="btn  btn-md"
+                          className="btn bg-red-500 text-white btn-md"
                         >
                           Unblocked
                         </button>
@@ -164,12 +164,12 @@ const AllUsers = () => {
                     </td>
                     <td>
                       <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
+                        <div tabIndex={0} role="button" className="btn bg-red-500 text-white m-1">
                           Manage Role <FaAngleDown />
                         </div>
                         <ul
                           tabIndex="-1"
-                          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                          className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
                         >
                           <li>
                             <button onClick={()=>handleAssignVolunteer(user._id)} >

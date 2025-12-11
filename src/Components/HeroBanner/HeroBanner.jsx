@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import slide1 from '/slide1.jpg'
 import slide2 from '/slide2.jpg'
 import slide3 from '/Slide3.jpg'
+import { useNavigate } from "react-router";
 const images = [
   slide1,slide2,slide3
 ];
@@ -24,7 +25,7 @@ const textContent = [
 
 const HeroBanner = () => {
   const [index, setIndex] = useState(0);
-
+  const navigate = useNavigate()
   // Auto slide every 4 seconds
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,9 +58,14 @@ const HeroBanner = () => {
                 {textContent[index].desc}
               </p>
 
-              <button className="mt-8 btn bg-red-600 hover:bg-red-700 border-none text-white px-8">
-                Get Started
+              <div className="flex gap-3">
+                <button onClick={()=>navigate("/authLayout/register")} className="mt-8 btn bg-red-600 hover:bg-red-700 border-none text-white px-8">
+                Join as a Donor
               </button>
+              <button onClick={()=>navigate("/searchDonor")} className="mt-8 btn bg-red-600 hover:bg-red-700 border-none text-white px-8">
+                Search Donor
+              </button>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

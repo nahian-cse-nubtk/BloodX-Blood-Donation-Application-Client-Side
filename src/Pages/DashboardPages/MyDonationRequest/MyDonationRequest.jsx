@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth/useAuth";
+import { MdDone } from "react-icons/md";
+import { ImCancelCircle } from "react-icons/im";
 import {
   FaCalendarAlt,
   FaClock,
@@ -14,9 +16,10 @@ import {
 import { toast } from "react-toastify";
 import { FaAngleDown } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
+import Swal from "sweetalert2";
 
 const MyDonationRequest = () => {
-  const [donationStatus, setDonationStatus] = useState("")
+  const [donationStatus, setDonationStatus] = useState("");
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [page, setPage] = useState(0);
@@ -39,15 +42,32 @@ const MyDonationRequest = () => {
   const totalRequests = requests?.totalRequests;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
 
-  if (isPending) return <Loading></Loading>
+  if (isPending) return <Loading></Loading>;
 
   const handleDeleteRequest = (id) => {
-    axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
       if (res.data.deletedCount) {
         refetch();
-        toast("Delete successful");
+        Swal.fire({
+          title: "Deleted!",
+          text: "The request has been deleted.",
+          icon: "success",
+        });
       }
     });
+      }
+    });
+
   };
   const handleUpdateStatus = (id, status) => {
     const statusInfo = {
@@ -84,17 +104,25 @@ const MyDonationRequest = () => {
                 className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
-                  <button onClick={() => setDonationStatus("pending")}>Pending</button>
+                  <button onClick={() => setDonationStatus("pending")}>
+                    Pending
+                  </button>
                 </li>
 
                 <li>
-                  <button onClick={() => setDonationStatus("inprogress")}>Inprogress</button>
+                  <button onClick={() => setDonationStatus("inprogress")}>
+                    Inprogress
+                  </button>
                 </li>
                 <li>
-                  <button onClick={() => setDonationStatus("done")}>Done</button>
+                  <button onClick={() => setDonationStatus("done")}>
+                    Done
+                  </button>
                 </li>
                 <li>
-                  <button onClick={() => setDonationStatus("cancel")}>Cancelled</button>
+                  <button onClick={() => setDonationStatus("cancel")}>
+                    Cancelled
+                  </button>
                 </li>
                 <li>
                   <button onClick={() => setDonationStatus("")}>All</button>
@@ -175,48 +203,62 @@ const MyDonationRequest = () => {
                     </td>
 
                     {/* ACTION BUTTONS */}
-                    <td className="flex gap-2">
-                      {/* Done / Cancel only when inprogress */}
-                      {req.donationStatus === "inprogress" && (
-                        <>
-                          <button
-                            onClick={() => handleStatusDone(req._id)}
-                            className="btn btn-success btn-xs"
-                          >
-                            Done
-                          </button>
-                          <button
-                            onClick={() => handleStatusCancel(req._id)}
-                            className="btn btn-error btn-xs"
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      )}
+                    <td>
+                      <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn m-1">
+                          Actions <FaAngleDown />
+                        </div>
+                        <ul
+                          tabIndex="-1"
+                          className="dropdown-content menu bg-red-400 rounded-box z-1 w-52 p-2 shadow-sm"
+                        >
+                          {req.donationStatus === "inprogress" && (
+                            <>
+                              <li>
+                                <button
+                                  onClick={() => handleStatusDone(req._id)}
+                                  className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                                >
+                                  <MdDone /> Done
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() => handleStatusCancel(req._id)}
+                                  className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                                >
+                                  <ImCancelCircle /> Cancel
+                                </button>
+                              </li>
+                            </>
+                          )}
+                          <li>
+                            <Link
+                              to={`/dashboard/donationRequestEdit/${req._id}`}
+                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                            >
+                              <FaEdit /> Edit
+                            </Link>
+                          </li>
 
-                      {/* Edit */}
-                      <Link
-                        to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn btn-info btn-xs flex items-center gap-1"
-                      >
-                        <FaEdit /> Edit
-                      </Link>
-
-                      {/* Delete */}
-                      <button
-                        onClick={() => handleDeleteRequest(req._id)}
-                        className="btn btn-warning btn-xs flex items-center gap-1"
-                      >
-                        <FaTrash /> Delete
-                      </button>
-
-                      {/* View */}
-                      <Link
-                        to={`/dashboard/request/${req._id}`}
-                        className="btn btn-neutral btn-xs flex items-center gap-1"
-                      >
-                        <FaEye /> View
-                      </Link>
+                          <li>
+                            <button
+                              onClick={() => handleDeleteRequest(req._id)}
+                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                            >
+                              <FaTrash /> Delete
+                            </button>
+                          </li>
+                          <li>
+                            <Link
+                              to={`/donationDetails/${req._id}`}
+                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                            >
+                              <FaEye /> View
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </td>
                   </tr>
                 ))}

@@ -80,7 +80,7 @@ useEffect(() => {
   return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* LEFT CARD */}
-      <div className="bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg p-6 flex flex-col items-center border">
+      <div className="bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg p-6 flex flex-col items-center shadow-red-100">
         <img
           src={userData.Image}
           className="w-32 h-32 rounded-full border-4 border-white shadow-md"
@@ -99,14 +99,14 @@ useEffect(() => {
       </div>
 
       {/* RIGHT FORM CARD */}
-      <div className="md:col-span-2 bg-white rounded-2xl shadow-xl p-6">
+      <div className="md:col-span-2 bg-white rounded-2xl shadow-xl p-6 shadow-red-100">
         <div className="flex justify-between items-center mb-5">
           <h3 className="text-2xl font-semibold">Profile Information</h3>
 
           {!editMode ? (
             <button
               onClick={() => setEditMode(true)}
-              className="btn btn-neutral btn-sm"
+              className="btn bg-red-500 text-white btn-md"
             >
               Edit
             </button>
@@ -188,7 +188,7 @@ useEffect(() => {
 
           {editMode && (
             <div className="md:col-span-2 mt-4">
-              <button className="btn btn-neutral w-full">Save Changes</button>
+              <button className="btn bg-red-500 text-white w-full">Save Changes</button>
             </div>
           )}
         </form>

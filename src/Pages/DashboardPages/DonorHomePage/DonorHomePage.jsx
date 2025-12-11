@@ -1,71 +1,86 @@
-import React from 'react';
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth/useAuth";
-import { FaCalendarAlt, FaClock, FaTint, FaEdit, FaTrash, FaEye } from "react-icons/fa";
-import { toast } from 'react-toastify';
-import Loading from '../../../Components/Loading/Loading';
+import { MdDone } from "react-icons/md";
+import { ImCancelCircle } from "react-icons/im";
+import {
+  FaCalendarAlt,
+  FaClock,
+  FaTint,
+  FaEdit,
+  FaTrash,
+  FaEye,
+
+  FaAngleDown,
+} from "react-icons/fa";
+import { toast } from "react-toastify";
+import Loading from "../../../Components/Loading/Loading";
 
 const DonorHomePage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: requests = [], isPending,refetch } = useQuery({
+  const {
+    data: requests = [],
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["donor-requests", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/donationRequests/${user?.email}`);
       return res.data;
     },
   });
- console.log(requests)
+  console.log(requests);
   const recentRequests = requests.slice(0, 3);
 
-  if (isPending) return <Loading></Loading>
+  if (isPending) return <Loading></Loading>;
 
-  const handleDeleteRequest =(id)=>{
-       axiosSecure.delete(`/donationRequests/${id}/request`)
-       .then(res=>{
-        if(res.data.deletedCount){
-            refetch();
-            toast('Delete successful')
+  const handleDeleteRequest = (id) => {
+    axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
+      if (res.data.deletedCount) {
+        refetch();
+        toast("Delete successful");
+      }
+    });
+  };
+  const handleUpdateStatus = (id, status) => {
+    const statusInfo = {
+      donationStatus: status,
+    };
+    axiosSecure
+      .patch(`/donationRequests/${id}/status`, statusInfo)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast("Status Updated");
         }
-       })
-  }
-  const handleUpdateStatus = (id,status)=>{
-    const statusInfo ={
-        donationStatus: status
-    }
-    axiosSecure.patch(`/donationRequests/${id}/status`,statusInfo)
-    .then(res=>{
-        if(res.data.modifiedCount){
-            refetch()
-            toast('Status Updated')
-        }
-    })
-
-  }
-  const handleStatusDone=(id)=>{
-    handleUpdateStatus(id,'done')
-  }
-  const handleStatusCancel=(id)=>{
-    handleUpdateStatus(id,'cancel')
-  }
+      });
+  };
+  const handleStatusDone = (id) => {
+    handleUpdateStatus(id, "done");
+  };
+  const handleStatusCancel = (id) => {
+    handleUpdateStatus(id, "cancel");
+  };
   return (
     <div className="p-6 space-y-8">
-
       {/* ------------------ WELCOME CARD ------------------ */}
       <div className="bg-linear-to-r from-red-500 to-red-700 text-white p-8 rounded-2xl shadow-lg">
         <h1 className="text-3xl font-bold">Welcome, {user?.displayName} 👋</h1>
-        <p className="text-white/90 mt-1">Glad to see you back. Stay ready to save lives!</p>
+        <p className="text-white/90 mt-1">
+          Glad to see you back. Stay ready to save lives!
+        </p>
       </div>
-
 
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
       {recentRequests.length > 0 && (
         <div className="bg-white rounded-2xl shadow-xl p-6">
-
-          <h2 className="text-xl font-semibold mb-4">Your Recent Donation Requests</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Your Recent Donation Requests
+          </h2>
 
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
@@ -85,12 +100,13 @@ const DonorHomePage = () => {
               <tbody>
                 {recentRequests.map((req) => (
                   <tr key={req._id} className="hover:bg-gray-50">
-
                     {/* Recipient */}
                     <td className="font-medium">{req.recipientName}</td>
 
                     {/* Location */}
-                    <td>{req.recipientDistrict}, {req.recipientUpazila}</td>
+                    <td>
+                      {req.recipientDistrict}, {req.recipientUpazila}
+                    </td>
                     {/* Address */}
                     <td>{req.fullAddress}</td>
                     {/* Date + Time */}
@@ -137,46 +153,69 @@ const DonorHomePage = () => {
                         <p className="text-gray-400">N/A</p>
                       )}
                     </td>
-
-                    {/* ACTION BUTTONS */}
-                    <td className="flex gap-2">
-
-                      {/* Done / Cancel only when inprogress */}
-                      {req.donationStatus === "inprogress" && (
+                    <td>
+                      <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn m-1">
+                          Actions <FaAngleDown />
+                        </div>
+                        <ul
+                          tabIndex="-1"
+                          className="dropdown-content menu bg-red-400 rounded-box z-1 w-52 p-2 shadow-sm"
+                        >
+                          {req.donationStatus === "inprogress" && (
                         <>
-                          <button onClick={()=>handleStatusDone(req._id)} className="btn btn-success btn-xs">Done</button>
-                          <button onClick={()=>handleStatusCancel(req._id)} className="btn btn-error btn-xs">Cancel</button>
+                          <li><button
+                            onClick={() => handleStatusDone(req._id)}
+                            className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                          >
+                            <MdDone /> Done
+                          </button></li>
+                          <li>
+                            <button
+                            onClick={() => handleStatusCancel(req._id)}
+                            className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                          >
+                            <ImCancelCircle /> Cancel
+                          </button>
+                          </li>
                         </>
                       )}
-
-                      {/* Edit */}
-                      <Link
+                      <li>
+                        <Link
                         to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn btn-info btn-xs flex items-center gap-1"
+                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
                       >
                         <FaEdit /> Edit
                       </Link>
 
-                      {/* Delete */}
-                      <button onClick={()=>handleDeleteRequest(req._id)} className="btn btn-warning btn-xs flex items-center gap-1">
+                      </li>
+
+                      <li>
+                        <button
+                        onClick={() => handleDeleteRequest(req._id)}
+                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                      >
                         <FaTrash /> Delete
                       </button>
 
-                      {/* View */}
-                      <Link
-                        to={`/dashboard/request/${req._id}`}
-                        className="btn btn-neutral btn-xs flex items-center gap-1"
+                      </li>
+                      <li>
+                        <Link
+                        to={`/donationDetails/${req._id}`}
+                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
                       >
                         <FaEye /> View
                       </Link>
-
+                      </li>
+                        </ul>
+                      </div>
                     </td>
+
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
         </div>
       )}
 
@@ -191,7 +230,6 @@ const DonorHomePage = () => {
           </Link>
         </div>
       )}
-
     </div>
   );
 };

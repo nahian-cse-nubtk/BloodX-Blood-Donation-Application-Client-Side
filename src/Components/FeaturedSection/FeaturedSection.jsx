@@ -46,7 +46,7 @@ const FeaturedSection = () => {
       {/* Section Title */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-red-600">
-          Why Choose Our Platform?
+          Why Our Platform Best ?
         </h2>
         <p className="text-gray-600 mt-2">
           Designed to connect donors and patients with trust, safety, and care.

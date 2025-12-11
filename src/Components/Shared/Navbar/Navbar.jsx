@@ -28,7 +28,7 @@ const Navbar = () => {
       </li>
       <li className="hover:bg-red-500">
         <NavLink to="/donateFund">
-          
+
           Donate Fund
         </NavLink>
       </li>
@@ -103,10 +103,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
-            <Link className="btn mr-3" to="/authLayout/login">
+            <Link className="btn bg-red-500 text-white mr-3" to="/authLayout/login">
               Login
             </Link>
-            <Link className="btn" to="/authLayout/register">
+            <Link className="btn bg-red-500 text-white" to="/authLayout/register">
               Register
             </Link>
           </div>
