@@ -1,27 +1,17 @@
 import React, { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
+import { format } from "date-fns";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
-import { FaAngleDown } from "react-icons/fa";
-import {
-  FaCalendarAlt,
-  FaClock,
-  FaTint,
-  FaEdit,
-  FaTrash,
-  FaEye,
-} from "react-icons/fa";
-import { toast } from "react-toastify";
+
 import Loading from "../../../Components/Loading/Loading";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth/useAuth";
-import axios from "axios";
+
 
 const DonateFund = () => {
     const {user}=useAuth()
   const axiosSecure = useAxiosSecure();
   const paymentModalRef = useRef()
-  const [donationStatus, setDonationStatus] = useState("");
 
   const [singlePage, setPage] = useState(0);
 
@@ -33,24 +23,24 @@ const DonateFund = () => {
   });
 
   const {
-    data: requests = {},
+    data: funds = {},
     isPending,
-    refetch,
+
   } = useQuery({
-    queryKey: ["donar-requests-info", singlePage, donationStatus],
+    queryKey: ["fundsData", singlePage],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `donationRequests?donationStatus=${donationStatus}&skip=${
+        `donateFunds?skip=${
           singlePage * 5
         }&limit=5`
       );
       return res.data;
     },
   });
-  const recentRequests = requests?.result;
-  const totalRequests = requests?.totalData;
-  const totalPages = Math.ceil(Number(totalRequests) / 5);
-  console.log(totalPages);
+  const recentFunds = funds?.result;
+  const totalfunds = funds?.totalFundData;
+  const totalPages = Math.ceil(Number(totalfunds) / 5);
+
   if (isPending) return <Loading></Loading>;
 
   const handlePayment =(data)=>{
@@ -61,6 +51,7 @@ const DonateFund = () => {
     }
     axiosSecure.post('/create-checkout-session',paymentInfo)
     .then(res=>{
+        paymentModalRef.current.close()
         window.location.href =res.data.url
     })
   }
@@ -68,54 +59,37 @@ const DonateFund = () => {
   return (
     <div className="py-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
-      {recentRequests.length > 0 && (
+      {recentFunds.length > 0 && (
         <div className="bg-white rounded-2xl shadow-xl p-6">
-          <h2 className="text-xl font-semibold mb-4">All Donation Requests</h2>
+          <h2 className="text-2xl font-semibold mb-4">All Fund Donation</h2>
           <div className="flex justify-end mb-4">
-            <button onClick={()=>paymentModalRef.current.showModal()} className="btn bg-red-500 text-white">Donate Now</button>
+            <button onClick={()=>paymentModalRef.current.showModal()} className="btn bg-red-500 text-white">Donate Fund</button>
           </div>
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
               <thead className="bg-gray-100">
                 <tr>
-                  <th>Recipient</th>
-                  <th>Location</th>
-                  <th>Address</th>
+                  <th>Fund Doner</th>
+                  <th>Donate Amount</th>
+
                   <th>Date & Time</th>
-                  <th>Blood</th>
-                  <th>Status</th>
-                  <th>Donor Info</th>
-                  <th>Change Donation Status</th>
-                  <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
-                {recentRequests.map((req) => (
-                  <tr key={req._id} className="hover:bg-gray-50">
-                    {/* Recipient */}
-                    <td className="font-medium">{req.recipientName}</td>
+                {recentFunds.map((fund) => (
+                  <tr key={fund._id} className="hover:bg-gray-50">
+                    {/* fund doner name */}
+                    <td className="font-medium">{fund.donerName}</td>
 
-                    {/* Location */}
+                    {/* Donate Amount */}
                     <td>
-                      {req.recipientDistrict}, {req.recipientUpazila}
+                      {fund.donateAmount}
                     </td>
-                    {/* Address */}
-                    <td>{req.fullAddress}</td>
-                    {/* Date + Time */}
-                    <td>
-                      <div className="flex items-center gap-1">
-                        <FaCalendarAlt /> {req.donationDate}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <FaClock /> {req.donationTime}
-                      </div>
-                    </td>
+                    {/* Date and time */}
+                    <td>{format(new Date(fund.fundDonateAt), "PPpp")}</td>
 
-                    {/* Blood */}
-                    <td className="text-red-600 font-bold flex items-center gap-2">
-                      <FaTint /> {req.bloodGroup}
-                    </td>
+
                   </tr>
                 ))}
               </tbody>
@@ -125,7 +99,7 @@ const DonateFund = () => {
       )}
 
       {/* ------------------ VIEW ALL REQUESTS BUTTON ------------------ */}
-      {recentRequests.length > 0 && (
+      {recentFunds.length > 0 && (
         <div className="text-right flex justify-center">
           <button
             disabled={singlePage === 0}
