@@ -40,14 +40,7 @@ const AllBloodDonationRequests = () => {
   console.log(totalPages);
   if (isPending) return <Loading></Loading>
 
-  const handleDeleteRequest = (id) => {
-    axiosSecure.delete(`/donationRequests/${id}/request`).then((res) => {
-      if (res.data.deletedCount) {
-        refetch();
-        toast("Delete successful");
-      }
-    });
-  };
+  
   const handleUpdateStatus = (id, status) => {
     const statusInfo = {
       donationStatus: status,

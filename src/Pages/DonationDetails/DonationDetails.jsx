@@ -17,11 +17,11 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
-import useRole from "../../hooks/useRole/useRole";
+
 import Loading from "../../Components/Loading/Loading";
 
 const DonationDetails = () => {
-  const {userInfo} =useRole()
+
   const { user } = useAuth();
   const modalRef = useRef();
   const axiosSecure = useAxiosSecure();

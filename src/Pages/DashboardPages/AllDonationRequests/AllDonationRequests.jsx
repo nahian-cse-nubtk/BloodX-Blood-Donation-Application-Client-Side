@@ -250,33 +250,44 @@ const AllDonationRequests = () => {
                         </ul>
                       </div>
                     </td>
+                    <td>
+                      <div className="dropdown dropdown-end">
+                        <div
+                          tabIndex={0}
+                          role="button"
+                          className="btn bg-red-500 text-white "
+                        >
+                          Actions <FaAngleDown />
+                        </div>
+                        <ul
+                          tabIndex="-1"
+                          className="dropdown-content menu bg-red-500 text-white rounded-box z-1 w-52 p-2 shadow-sm"
+                        >
+                          <li>
+                            <Link
+                              to={`/dashboard/donationRequestEdit/${req._id}`}
+                            >
+                              <FaEdit /> Edit
+                            </Link>
+                          </li>
 
-                    {/* ACTION BUTTONS */}
-                    <td className="flex gap-2 my-5">
-                      {/* Edit */}
-                      <Link
-                        to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn   btn-md bg-red-500 text-white flex items-center gap-1"
-                      >
-                        <FaEdit /> Edit
-                      </Link>
-
-                      {/* Delete */}
-                      <button
-                        onClick={() => handleDeleteRequest(req._id)}
-                        className="btn bg-red-500 text-white btn-md flex items-center gap-1"
-                      >
-                        <FaTrash /> Delete
-                      </button>
-
-                      {/* View */}
-                      <Link
-                        to={`/donationDetails/${req._id}`}
-                        className="btn bg-red-500 text-white  btn-md flex items-center gap-1"
-                      >
-                        <FaEye /> View
-                      </Link>
+                          <li>
+                            <button
+                              onClick={() => handleDeleteRequest(req._id)}
+                            >
+                              <FaTrash /> Delete
+                            </button>
+                          </li>
+                          <li>
+                            <Link to={`/donationDetails/${req._id}`}>
+                              <FaEye /> View
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </td>
+
+                   
                   </tr>
                 ))}
               </tbody>

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData } from "react-router";
-import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
+
 
 import DonorCard from '../../../Components/DonorCard/DonorCard';
 
 import { toast } from 'react-toastify';
+import useAxios from '../../../hooks/useAxios/useAxios';
 const SearchDonor = () =>{
-    const axiosSecure =useAxiosSecure()
+     const axios =useAxios()
     const [donors, setDonors] = useState([])
 
   const { districts, upzillas } = useLoaderData();
@@ -29,7 +30,7 @@ const SearchDonor = () =>{
 
 
   const onSubmit = (data) => {
-   axiosSecure.post('/donorsData',data)
+   axios.post('/donorsData',data)
    .then(res=>{
     if(res.data.length===0){
     toast('Data Not Found')
