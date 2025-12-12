@@ -88,10 +88,12 @@ const MyDonationRequest = () => {
   const handleStatusCancel = (id) => {
     handleUpdateStatus(id, "cancel");
   };
+
+
   return (
     <div className="p-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
-      {recentRequests.length > 0 && (
+
         <div className="bg-white rounded-2xl shadow-xl p-6">
           <h2 className="text-xl font-semibold mb-4">Your Donation Requests</h2>
           <div className="flex justify-end my-4">
@@ -130,6 +132,7 @@ const MyDonationRequest = () => {
               </ul>
             </div>
           </div>
+           {recentRequests.length > 0 ? (
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
               <thead className="bg-gray-100">
@@ -265,8 +268,11 @@ const MyDonationRequest = () => {
               </tbody>
             </table>
           </div>
+          ):<div>
+              <p className="text-xl text-red-500 text-center">oops! There is no request</p>
+            </div>}
         </div>
-      )}
+
 
       {/* ------------------ VIEW ALL REQUESTS BUTTON ------------------ */}
       {recentRequests.length > 0 && (
@@ -288,7 +294,7 @@ const MyDonationRequest = () => {
         </div>
       )}
     </div>
-  );
+  )
 };
 
 export default MyDonationRequest;

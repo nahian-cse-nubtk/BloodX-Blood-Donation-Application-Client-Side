@@ -41,8 +41,8 @@ useEffect(() => {
       name: userData.name,
       email: userData.email,
       district: userData.district,
-      upazila: userData.upzilla,
-      blood: userData.bloodGroup,
+      upzilla: userData.upzilla,
+      bloodGroup: userData.bloodGroup,
     });
   }
 }, [userData, reset]);
@@ -92,7 +92,7 @@ useEffect(() => {
         <div className="mt-4 space-y-2 w-full text-center">
           <p className="font-medium">Blood: <span className="text-red-600 font-bold">{userData.bloodGroup}</span></p>
           <p>District: {userData.district}</p>
-          <p>Upazilla: {userData.upzilla}</p>
+          <p>Upzilla: {userData.upzilla}</p>
         </div>
 
 
@@ -152,9 +152,9 @@ useEffect(() => {
 
           {/* UPAZILA */}
           <div>
-            <label className="font-medium">Upazila</label>
+            <label className="font-medium">Upzila</label>
             <select
-              {...register("upazilla")}
+              {...register("upzilla")}
               disabled={!editMode}
               className="select select-bordered w-full"
             >

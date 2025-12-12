@@ -83,7 +83,7 @@ const Navbar = () => {
                 <div className="avatar">
               <div className="mask rounded-full border-3 h-12 w-12 ">
                 <img
-                  src={user?user.photoURL:profileImage}
+                  src={user.photoURL?user.photoURL:profileImage}
                   alt="Profile Image" />
 
               </div>

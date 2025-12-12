@@ -3,7 +3,9 @@ import { useNavigate, useSearchParams } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
 import Loading from '../../../Components/Loading/Loading';
 import successImage from '/success.avif'
+import useAuth from '../../../hooks/useAuth/useAuth';
 const PaymentSuccess = () => {
+    const {loading,user} =useAuth()
     const navigate = useNavigate()
     const [donateData, setDonateData]=useState({})
     const axiosSecure = useAxiosSecure()
@@ -11,16 +13,17 @@ const PaymentSuccess = () => {
     const sessionId = searchParams.get('sessionId')
     console.log(sessionId)
     useEffect(()=>{
-        if(!sessionId) return
+        if(!sessionId ||loading || !user) return
+
         axiosSecure.patch(`/payment-success?sessionId=${sessionId}`)
         .then(res=>{
-            
+
             setDonateData(res.data.fundData);
         })
 
-    },[sessionId])
+    },[axiosSecure, loading, sessionId, user])
 
-    if(!donateData){
+    if(!donateData||!user||loading){
         return <Loading></Loading>
     }
 

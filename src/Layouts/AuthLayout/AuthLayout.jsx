@@ -1,9 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import authImage from '/register.avif'
+import Navbar from '../../Components/Shared/Navbar/Navbar';
+import Footer from '../../Components/Shared/Footer/Footer';
 
 const AuthLayout = () => {
     return (
+        <div>
+            <Navbar></Navbar>
         <div className='max-w-7xl mx-auto p-8'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
                 <div>
@@ -11,11 +15,14 @@ const AuthLayout = () => {
             </div>
             {/* image */}
             <div className='flex items-center justify-center'>
+
                 <img src={authImage} alt="AuthImage" />
 
             </div>
             </div>
 
+        </div>
+        <Footer></Footer>
         </div>
     );
 };
