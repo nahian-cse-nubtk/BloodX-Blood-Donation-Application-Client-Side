@@ -58,8 +58,7 @@ const DashboardLayout = () => {
           </NavLink>
         </li>
         {/* Doner specific links */}
-        {
-            userInfo.role==='Donor'&&<>
+
             <li>
           <NavLink to='/dashboard/createDonationRequest' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create dontaion request">
             {/* profile icon */}
@@ -74,8 +73,7 @@ const DashboardLayout = () => {
             <span className="is-drawer-close:hidden">My dontaion request</span>
           </NavLink>
         </li>
-            </>
-        }
+            
         {
             userInfo.role==='Admin'&&<>
             <li>
