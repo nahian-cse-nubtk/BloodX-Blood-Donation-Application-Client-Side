@@ -48,7 +48,7 @@ const Login = () => {
             <button type="submit" className="btn bg-red-600 text-white mt-4">Login</button>
           </fieldset>
          </form>
-         <p>Don't have an account? <Link to='/authLayot/register'><span className="text-red-400 underline">Register</span></Link></p>
+         <p>Don't have an account? <Link to='/authLayout/register'><span className="text-red-400 underline">Register</span></Link></p>
         </div>
       </div>
     </div>

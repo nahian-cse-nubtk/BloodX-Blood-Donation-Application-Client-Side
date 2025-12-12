@@ -32,7 +32,7 @@ const useAxiosSecure = () => {
         if (statusCode === 401 || statusCode === 403) {
           await signOutUser();
           toast('You have been signed out.');
-          navigate('/authLayout/login');
+          navigate('/authLayout');
         }
 
         return Promise.reject(error);

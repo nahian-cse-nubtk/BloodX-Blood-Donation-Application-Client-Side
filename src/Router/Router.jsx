@@ -144,7 +144,7 @@ const Router = createBrowserRouter([
         Component: AuthLayout,
         children:[
             {
-                path: 'login',
+                index:true,
                 Component: Login
             },
             {

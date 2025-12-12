@@ -81,10 +81,11 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="m-1">
                 <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
+              <div className="mask rounded-full border-3 h-12 w-12 ">
                 <img
                   src={user?user.photoURL:profileImage}
                   alt="Profile Image" />
+
               </div>
             </div>
               </div>
@@ -103,7 +104,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
-            <Link className="btn bg-red-500 text-white mr-3" to="/authLayout/login">
+            <Link className="btn bg-red-500 text-white mr-3" to="/authLayout">
               Login
             </Link>
             <Link className="btn bg-red-500 text-white" to="/authLayout/register">

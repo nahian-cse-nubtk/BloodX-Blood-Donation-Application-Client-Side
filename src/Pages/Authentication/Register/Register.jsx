@@ -213,7 +213,7 @@ const Register = () => {
               <button type="submit" className="btn bg-red-600 text-white mt-4">Register</button>
             </fieldset>
           </form>
-          <p>Already have an account? <Link to='/authLayot/login'><span className="text-red-400 underline">Login</span></Link></p>
+          <p>Already have an account? <Link to='/authLayout'><span className="text-red-400 underline">Login</span></Link></p>
         </div>
       </div>
     </div>

@@ -36,7 +36,7 @@ const HeroBanner = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-white py-5 px-6 md:px-16 border-3 border-red-400 rounded-2xl my-3 shadow-2xl shadow-red-100">
+    <div className="w-full overflow-hidden bg-base-100 py-5 px-6 md:px-16 rounded-2xl my-3 shadow-xl shadow-red-100">
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
 
