@@ -14,7 +14,7 @@ const PaymentSuccess = () => {
         if(!sessionId) return
         axiosSecure.patch(`/payment-success?sessionId=${sessionId}`)
         .then(res=>{
-            console.log(res.data.fundData)
+            
             setDonateData(res.data.fundData);
         })
 

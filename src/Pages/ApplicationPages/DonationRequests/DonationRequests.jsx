@@ -11,8 +11,8 @@ const DonationRequests = () => {
     const {data:requests=[],isPending}=useQuery({
         queryKey: ['requests','donationStatus'],
         queryFn: async()=>{
-            const res = await axios.get(`/donationRequests?donationStatus=pending`)
-            return res.data.result
+            const res = await axios.get(`donationRequest/public?donationStatus=pending`)
+            return res.data
         }
     })
     if(isPending){
@@ -24,7 +24,7 @@ const DonationRequests = () => {
             <h1 className='text-4xl text-center font-bold text-red-500 my-10'>All Donation Requests Here</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                 {
-                    requests.map(request=><DonationCard request={request}></DonationCard>)
+                    requests.map(request=><DonationCard key={request._id} request={request}></DonationCard>)
                 }
 
             </div>
