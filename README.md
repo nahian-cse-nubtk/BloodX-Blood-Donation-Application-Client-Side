@@ -1,16 +1,190 @@
-# React + Vite
+🚀 BloodX – Blood Donation Application
+🔗 Live Project Link: [Add your deployed URL here]
+🩸 Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BloodX is a modern, full-stack blood donation management platform designed to connect donors, volunteers, and administrators in an efficient and transparent ecosystem.
+This application showcases real-world system design, secure authentication, role-based dashboards, Stripe-powered donation handling, and fully dynamic request management.
 
-Currently, two official plugins are available:
+It was built as part of a professional skill-assessment project to evaluate problem-solving, system structuring, and UI/UX decision-making.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎯 Key Features
+🔐 Authentication & Authorization
 
-## React Compiler
+Firebase Authentication (Email/Password & Token Management)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Backend JWT Verification (Firebase Admin SDK)
 
-## Expanding the ESLint configuration
+Role-Based Access: Donor, Volunteer, Admin
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Protected Routes (Frontend + Backend)
+
+🧑‍💻 Donor Features
+
+Update profile information
+
+Create blood donation requests
+
+Manage personal donation requests
+
+Donate funds using Stripe Payment Integration
+
+View donation tracking details
+
+🤝 Volunteer Features
+
+Access volunteer dashboard
+
+View user, funding & donation statistics
+
+Manage donation request statuses (Approve/Receiving/Ongoing/Delivered)
+
+🛠️ Admin Features
+
+Complete admin dashboard
+
+Manage all users (role update, block/unblock)
+
+Manage all donation requests
+
+View detailed platform statistics
+
+Update admin profile
+
+📊 Dashboard Statistics
+
+All dashboards show dynamic, real-time stats using TanStack Query:
+
+Total Donors
+
+Total Funds Collected
+
+Total Blood Donation Requests
+
+Volunteer progress overview
+
+Admin-level system insights
+
+💳 Fund Donation System
+
+Stripe Checkout Session integrated in backend (Node + Express)
+
+Secure payment workflow
+
+Metadata storage for tracking
+
+Automatically generated:
+
+Transaction ID
+
+Tracking ID
+
+Payment Success → Data saved to database & displayed to user
+
+🧩 Pagination & Filtering
+
+Pagination implemented for donation requests list
+
+Donors can filter by:
+
+District
+
+Upazila
+
+Blood Group
+
+🛠️ Tech Stack
+Frontend
+
+React.js
+
+React Router
+
+React Hook Form
+
+TanStack Query
+
+Axios
+
+React Icons
+
+Tailwind CSS
+
+SweetAlert2
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB
+
+Firebase Admin SDK (JWT verification)
+
+Tools
+
+Stripe Payment Gateway
+
+Vercel / Netlify (Frontend hosting)
+
+Render / Railway (Backend hosting)
+
+📁 Project Structure
+BloodX/
+ ├── client/ (React App)
+ │   ├── components/
+ │   ├── pages/
+ │   ├── hooks/
+ │   ├── dashboard/
+ │   └── ...
+ ├── server/ (Express API)
+ │   ├── routes/
+ │   ├── controllers/
+ │   ├── middlewares/
+ │   └── config/
+ └── README.md
+
+🧪 Why This Project Stands Out
+
+Clean and scalable architecture
+
+Highly secure authentication & role control
+
+Real-world donation workflow implementation
+
+Stripe fund donation system
+
+Three separate dashboards
+
+Professional-level UI/UX with responsiveness
+
+Clear separation of frontend & backend responsibilities
+
+Industry-standard packages (React Query, JWT, Firebase Admin, Axios Interceptors)
+
+🟢 Installation & Setup
+Frontend
+cd client
+npm install
+npm run dev
+
+Backend
+cd server
+npm install
+npm start
+
+
+Environment variables needed:
+
+FIREBASE_ADMIN_SERVICE_ACCOUNT=
+MONGODB_URI=
+STRIPE_SECRET_KEY=
+SITE_DOMAIN=
+
+🤝 Contributors
+
+Developed by Shaikh Al Nahian
+
+📌 License
+
+This project is for practice purposes.
