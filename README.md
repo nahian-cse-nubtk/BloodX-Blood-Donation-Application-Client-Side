@@ -1,5 +1,7 @@
 🚀 BloodX – Blood Donation Application
+
 🔗 Live Project Link: [Add your deployed URL here]
+
 🩸 Overview
 
 BloodX is a modern, full-stack blood donation management platform designed to connect donors, volunteers, and administrators in an efficient and transparent ecosystem.
@@ -125,24 +127,11 @@ Tools
 
 Stripe Payment Gateway
 
-Vercel / Netlify (Frontend hosting)
+Firebase Hosting (Frontend hosting)
 
-Render / Railway (Backend hosting)
+Vercel (Backend hosting)
 
-📁 Project Structure
-BloodX/
- ├── client/ (React App)
- │   ├── components/
- │   ├── pages/
- │   ├── hooks/
- │   ├── dashboard/
- │   └── ...
- ├── server/ (Express API)
- │   ├── routes/
- │   ├── controllers/
- │   ├── middlewares/
- │   └── config/
- └── README.md
+
 
 🧪 Why This Project Stands Out
 
@@ -177,8 +166,11 @@ npm start
 Environment variables needed:
 
 FIREBASE_ADMIN_SERVICE_ACCOUNT=
+
 MONGODB_URI=
+
 STRIPE_SECRET_KEY=
+
 SITE_DOMAIN=
 
 🤝 Contributors
