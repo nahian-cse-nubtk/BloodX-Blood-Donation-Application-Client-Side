@@ -1,5 +1,7 @@
-🚀 BloodX – Blood Donation Application
+🚀 Application Name: BloodX – Blood Donation Application
+
 🔗 Live Project Link: [Add your deployed URL here]
+
 🩸 Overview
 
 BloodX is a modern, full-stack blood donation management platform designed to connect donors, volunteers, and administrators in an efficient and transparent ecosystem.
@@ -8,6 +10,7 @@ This application showcases real-world system design, secure authentication, role
 It was built as part of a professional skill-assessment project to evaluate problem-solving, system structuring, and UI/UX decision-making.
 
 🎯 Key Features
+
 🔐 Authentication & Authorization
 
 Firebase Authentication (Email/Password & Token Management)
@@ -28,7 +31,7 @@ Manage personal donation requests
 
 Donate funds using Stripe Payment Integration
 
-View donation tracking details
+View donation donation request details
 
 🤝 Volunteer Features
 
@@ -93,7 +96,8 @@ Upazila
 Blood Group
 
 🛠️ Tech Stack
-Frontend
+
+Frontend:
 
 React.js
 
@@ -111,7 +115,7 @@ Tailwind CSS
 
 SweetAlert2
 
-Backend
+Backend:
 
 Node.js
 
@@ -125,24 +129,13 @@ Tools
 
 Stripe Payment Gateway
 
-Vercel / Netlify (Frontend hosting)
+Hosting:
 
-Render / Railway (Backend hosting)
+Firebase Hosting (Frontend hosting)
 
-📁 Project Structure
-BloodX/
- ├── client/ (React App)
- │   ├── components/
- │   ├── pages/
- │   ├── hooks/
- │   ├── dashboard/
- │   └── ...
- ├── server/ (Express API)
- │   ├── routes/
- │   ├── controllers/
- │   ├── middlewares/
- │   └── config/
- └── README.md
+Vercel (Backend hosting)
+
+
 
 🧪 Why This Project Stands Out
 
@@ -177,13 +170,16 @@ npm start
 Environment variables needed:
 
 FIREBASE_ADMIN_SERVICE_ACCOUNT=
+
 MONGODB_URI=
+
 STRIPE_SECRET_KEY=
+
 SITE_DOMAIN=
 
 🤝 Contributors
 
-Developed by Shaikh Al Nahian
+Developed by Shaikh Al Nahian, MERN Stack Developer
 
 📌 License
 
