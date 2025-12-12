@@ -1,4 +1,4 @@
-🚀 BloodX – Blood Donation Application
+🚀 Application Name: BloodX – Blood Donation Application
 
 🔗 Live Project Link: [Add your deployed URL here]
 
@@ -10,6 +10,7 @@ This application showcases real-world system design, secure authentication, role
 It was built as part of a professional skill-assessment project to evaluate problem-solving, system structuring, and UI/UX decision-making.
 
 🎯 Key Features
+
 🔐 Authentication & Authorization
 
 Firebase Authentication (Email/Password & Token Management)
@@ -30,7 +31,7 @@ Manage personal donation requests
 
 Donate funds using Stripe Payment Integration
 
-View donation tracking details
+View donation donation request details
 
 🤝 Volunteer Features
 
@@ -95,7 +96,8 @@ Upazila
 Blood Group
 
 🛠️ Tech Stack
-Frontend
+
+Frontend:
 
 React.js
 
@@ -113,7 +115,7 @@ Tailwind CSS
 
 SweetAlert2
 
-Backend
+Backend:
 
 Node.js
 
@@ -126,6 +128,8 @@ Firebase Admin SDK (JWT verification)
 Tools
 
 Stripe Payment Gateway
+
+Hosting:
 
 Firebase Hosting (Frontend hosting)
 
@@ -175,7 +179,7 @@ SITE_DOMAIN=
 
 🤝 Contributors
 
-Developed by Shaikh Al Nahian
+Developed by Shaikh Al Nahian, MERN Stack Developer
 
 📌 License
 
