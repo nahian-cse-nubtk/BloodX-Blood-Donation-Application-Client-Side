@@ -1,6 +1,6 @@
 🚀 Application Name: BloodX – Blood Donation Application
 
-🔗 Live Project Link: [Add your deployed URL here]
+🔗 Live Project Link: [https://bloodx-82248.web.app]
 
 🩸 Overview
 
