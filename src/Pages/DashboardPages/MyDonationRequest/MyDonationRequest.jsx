@@ -98,12 +98,12 @@ const MyDonationRequest = () => {
           <h2 className="text-xl font-semibold mb-4">Your Donation Requests</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
+              <div tabIndex={0} role="button" className="btn bg-red-500 text-white btn-md m-1">
                 Filtered By Donation Status <FaAngleDown />
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content menu bg-red-500 text-white btn-md rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
                   <button onClick={() => setDonationStatus("pending")}>
@@ -208,7 +208,7 @@ const MyDonationRequest = () => {
                     {/* ACTION BUTTONS */}
                     <td>
                       <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
+                        <div tabIndex={0} role="button" className="btn bg-red-500 text-white btn-md  m-1">
                           Actions <FaAngleDown />
                         </div>
                         <ul
@@ -220,7 +220,7 @@ const MyDonationRequest = () => {
                               <li>
                                 <button
                                   onClick={() => handleStatusDone(req._id)}
-                                  className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                                  className=" bg-red-500 text-white  hover:bg-red-600"
                                 >
                                   <MdDone /> Done
                                 </button>
@@ -228,7 +228,7 @@ const MyDonationRequest = () => {
                               <li>
                                 <button
                                   onClick={() => handleStatusCancel(req._id)}
-                                  className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                                  className=" bg-red-500 text-white  hover:bg-red-600"
                                 >
                                   <ImCancelCircle /> Cancel
                                 </button>
@@ -238,7 +238,7 @@ const MyDonationRequest = () => {
                           <li>
                             <Link
                               to={`/dashboard/donationRequestEdit/${req._id}`}
-                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                              className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                             >
                               <FaEdit /> Edit
                             </Link>
@@ -247,7 +247,7 @@ const MyDonationRequest = () => {
                           <li>
                             <button
                               onClick={() => handleDeleteRequest(req._id)}
-                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                              className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                             >
                               <FaTrash /> Delete
                             </button>
@@ -255,7 +255,7 @@ const MyDonationRequest = () => {
                           <li>
                             <Link
                               to={`/donationDetails/${req._id}`}
-                              className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                              className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                             >
                               <FaEye /> View
                             </Link>

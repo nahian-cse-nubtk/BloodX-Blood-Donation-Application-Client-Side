@@ -1,15 +1,18 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData, useLocation, useNavigate,Link } from "react-router";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 
 
 
 const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosSecure =useAxiosSecure()
+    const [error, setError] =useState('')
 
     const {createUser,updateUser} =useAuth()
   const { districts, upzillas } = useLoaderData();
@@ -41,7 +44,7 @@ const Register = () => {
      createUser(email,password)
      .then(result=>{
         if(result.user){
-     toast("Login successfull")
+     toast("Registration successfull")
      navigate(location.state || '/')
 
     const profileImage = data.Image[0]
@@ -65,15 +68,16 @@ const Register = () => {
                 district: data.district,
                 upzilla: data.upzilla
             }
-        axios.post('http://localhost:4000/users',userData)
+        axiosSecure.post('/users',userData)
         .then(res=>{
-            console.log(res.data)
+            //console.log(res.data)
         })
         })
 
     })
-    .catch(error=>{
-        console.log(error)
+    .catch(err=>{
+      setError(err)
+
     })
 
         }
@@ -208,6 +212,12 @@ const Register = () => {
                 errors.Image&& <p className="text-red-400">
                   {errors.Image.message}
                 </p>
+              }
+              {
+                error&&<p className="text-red-400">
+                  {error}
+                </p>
+
               }
 
               <button type="submit" className="btn bg-red-600 text-white mt-4">Register</button>

@@ -64,7 +64,7 @@ useEffect(() => {
 
     axiosSecure.patch('/users',updatedData)
     .then(res=>{
-        console.log(res.data)
+        //console.log(res.data)
         if(res.data.acknowledged){
             refetch()
             toast('Update successful')
@@ -150,9 +150,9 @@ useEffect(() => {
             </select>
           </div>
 
-          {/* UPAZILA */}
+          {/* UPZILA */}
           <div>
-            <label className="font-medium">Upzila</label>
+            <label className="font-medium">Upzilla</label>
             <select
               {...register("upzilla")}
               disabled={!editMode}

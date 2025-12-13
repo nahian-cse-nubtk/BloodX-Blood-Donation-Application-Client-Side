@@ -40,7 +40,7 @@ const SearchDonor = () =>{
 
   };
 
- console.log(donors)
+ //console.log(donors)
   return (
     <div className="p-6">
       <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl shadow-xl rounded-2xl p-8 border border-red-50">

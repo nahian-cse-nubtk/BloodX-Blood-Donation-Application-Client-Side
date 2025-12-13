@@ -53,18 +53,13 @@ const DonorCard = ({ donor }) => {
             <FaMapMarkerAlt />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Upazila</p>
-            <p className="font-semibold text-gray-800">{donor.upzila}</p>
+            <p className="text-sm text-gray-500">Upzilla</p>
+            <p className="font-semibold text-gray-800">{donor.upzilla}</p>
           </div>
         </div>
       </div>
 
-      {/* Button */}
-      <div className="mt-5 flex justify-end">
-        <button className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl shadow-sm transition">
-          View Profile
-        </button>
-      </div>
+
 
     </div>
   );

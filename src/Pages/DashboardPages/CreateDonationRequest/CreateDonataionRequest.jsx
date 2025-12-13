@@ -89,7 +89,7 @@ else{
           </div>
 
           {/* Recipient Name */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Recipient Name</label>
             <input
               {...register("recipientName", { required: true })}
@@ -99,7 +99,7 @@ else{
           </div>
 
           {/* Recipient District */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Recipient District</label>
             <select
               {...register("recipientDistrict", { required: true })}
@@ -115,7 +115,7 @@ else{
           </div>
 
           {/* Recipient Upazila */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Recipient Upazila</label>
             <select
               {...register("recipientUpazila", { required: true })}
@@ -132,7 +132,7 @@ else{
           </div>
 
           {/* Hospital Name */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Hospital Name</label>
             <input
               {...register("hospitalName", { required: true })}
@@ -152,7 +152,7 @@ else{
           </div>
 
           {/* Blood Group */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Blood Group</label>
             <select {...register("bloodGroup")} className="select select-bordered w-full">
               <option value="">Select Blood Group</option>
@@ -178,7 +178,7 @@ else{
           </div>
 
           {/* Donation Time */}
-          <div>
+          <div className='col-span-2 md:col-span-1'>
             <label className="font-semibold mb-1 block">Donation Time</label>
             <input
               type="time"

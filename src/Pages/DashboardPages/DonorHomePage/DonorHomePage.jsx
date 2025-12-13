@@ -33,7 +33,7 @@ const DonorHomePage = () => {
       return res.data;
     },
   });
-  console.log(requests);
+  //console.log(requests);
   const recentRequests = requests.slice(0, 3);
 
   if (isPending) return <Loading></Loading>;
@@ -155,7 +155,7 @@ const DonorHomePage = () => {
                     </td>
                     <td>
                       <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
+                        <div tabIndex={0} role="button" className="btn bg-red-500 text-white btn-md m-1">
                           Actions <FaAngleDown />
                         </div>
                         <ul
@@ -166,14 +166,14 @@ const DonorHomePage = () => {
                         <>
                           <li><button
                             onClick={() => handleStatusDone(req._id)}
-                            className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                            className=" bg-red-500 text-white  hover:bg-red-600"
                           >
                             <MdDone /> Done
                           </button></li>
                           <li>
                             <button
                             onClick={() => handleStatusCancel(req._id)}
-                            className="btn bg-red-500 text-white btn-md hover:bg-red-600"
+                            className=" bg-red-500 text-white  hover:bg-red-600"
                           >
                             <ImCancelCircle /> Cancel
                           </button>
@@ -183,7 +183,7 @@ const DonorHomePage = () => {
                       <li>
                         <Link
                         to={`/dashboard/donationRequestEdit/${req._id}`}
-                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                        className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                       >
                         <FaEdit /> Edit
                       </Link>
@@ -193,7 +193,7 @@ const DonorHomePage = () => {
                       <li>
                         <button
                         onClick={() => handleDeleteRequest(req._id)}
-                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                        className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                       >
                         <FaTrash /> Delete
                       </button>
@@ -202,7 +202,7 @@ const DonorHomePage = () => {
                       <li>
                         <Link
                         to={`/donationDetails/${req._id}`}
-                        className="btn bg-red-500 text-white btn-md flex items-center gap-1 hover:bg-red-600"
+                        className=" bg-red-500 text-white  flex items-center gap-1 hover:bg-red-600"
                       >
                         <FaEye /> View
                       </Link>

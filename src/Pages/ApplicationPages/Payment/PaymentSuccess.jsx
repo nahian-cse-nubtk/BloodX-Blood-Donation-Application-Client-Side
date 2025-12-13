@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
     const axiosSecure = useAxiosSecure()
     const [searchParams]=useSearchParams()
     const sessionId = searchParams.get('sessionId')
-    console.log(sessionId)
+    //console.log(sessionId)
     useEffect(()=>{
         if(!sessionId ||loading || !user) return
 

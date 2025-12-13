@@ -37,10 +37,10 @@ const AllBloodDonationRequests = () => {
   const recentRequests = requests?.result;
   const totalRequests = requests?.totalData;
   const totalPages = Math.ceil(Number(totalRequests) / 5);
-  console.log(totalPages);
+  //console.log(totalPages);
   if (isPending) return <Loading></Loading>
 
-  
+
   const handleUpdateStatus = (id, status) => {
     const statusInfo = {
       donationStatus: status,

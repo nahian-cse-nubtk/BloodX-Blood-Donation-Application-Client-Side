@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:4000',
+  baseURL: 'https://bloodx-blood-donation-applicaion.vercel.app',
 });
 
 const useAxiosSecure = () => {
