@@ -2,7 +2,7 @@ import { FaUserCircle, FaTint, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa
 
 const DonorCard = ({ donor }) => {
   return (
-    <div className="bg-white border border-red-200 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+    <div className="bg-white dark:bg-gray-700 border border-red-200 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
 
       {/* Top Section */}
       <div className="flex items-center gap-4">
@@ -13,8 +13,8 @@ const DonorCard = ({ donor }) => {
         />
 
         <div>
-          <h2 className="text-xl font-bold text-gray-800">{donor.name}</h2>
-          <p className="flex items-center gap-2 text-gray-500 text-sm">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-white">{donor.name}</h2>
+          <p className="flex items-center gap-2 text-gray-500 dark:text-white text-sm">
             <FaEnvelope /> {donor.email}
           </p>
         </div>
@@ -31,30 +31,30 @@ const DonorCard = ({ donor }) => {
             <FaTint />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Blood Group</p>
+            <p className="text-sm text-gray-500 dark:text-white">Blood Group</p>
             <p className="text-lg font-semibold text-red-600">{donor.bloodGroup}</p>
           </div>
         </div>
 
         {/* District */}
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-gray-100 text-gray-600 rounded-xl">
+          <div className="p-3 bg-gray-100 text-gray-600 dark:text-white rounded-xl">
             <FaMapMarkerAlt />
           </div>
           <div>
-            <p className="text-sm text-gray-500">District</p>
-            <p className="font-semibold text-gray-800">{donor.district}</p>
+            <p className="text-sm text-gray-500 dark:text-white">District</p>
+            <p className="font-semibold text-gray-800 dark:text-white">{donor.district}</p>
           </div>
         </div>
 
         {/* Upazila */}
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-gray-100 text-gray-600 rounded-xl">
+          <div className="p-3 bg-gray-100 text-gray-600 dark:text-white rounded-xl">
             <FaMapMarkerAlt />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Upzilla</p>
-            <p className="font-semibold text-gray-800">{donor.upzilla}</p>
+            <p className="text-sm text-gray-500 dark:text-white">Upzilla</p>
+            <p className="font-semibold text-gray-800 dark:text-white">{donor.upzilla}</p>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff5f5; /* change to your theme background */
+   /* change to your theme background */
   overflow: hidden; /* prevents extra scroll space */
 
   .loader {

@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <div>
       <h1 className="text-6xl font-bold text-red-400 text-center my-10">Welcome Back <br /><span className="text-4xl">Login Now!</span></h1>
-      <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl shadow-red-100">
+      <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-sm shadow-red-100">
         <div className="card-body">
          <form onSubmit={handleSubmit(handleLogin)}>
              <fieldset className="fieldset">

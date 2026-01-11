@@ -1,14 +1,14 @@
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import contact from '/contact.avif'
+import contact from '/contact.png'
 const ContactSection = () => {
   return (
-    <div className="py-3 bg-white">
+    <div className="py-3 ">
       {/* Section Title */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-red-600">
+        <h2 className="text-3xl md:text-4xl font-bold text-red-600 ">
           Contact Us
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 dark:text-white mt-2">
           We are here to help you 24/7. Reach out anytime.
         </p>
       </div>
@@ -16,7 +16,7 @@ const ContactSection = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
 
         {/* Contact Form */}
-        <div className="bg-white border border-red-200 rounded-xl shadow-lg p-8 shadow-red-100">
+        <div className="bg-white dark:bg-gray-700 border border-red-200 rounded-xl shadow-sm p-8 shadow-red-100">
           <h3 className="text-2xl font-semibold text-red-600 mb-6">
             Send us a message
           </h3>
@@ -51,17 +51,17 @@ const ContactSection = () => {
           <div className="mt-8 space-y-4">
             <div className="flex items-center gap-3">
               <FaPhoneAlt className="text-red-600 text-xl" />
-              <p className="text-gray-700">+880 1234 567 890</p>
+              <p className="text-gray-700 dark:text-white">+880 1234 567 890</p>
             </div>
 
-            <div className="flex items-center gap-3">
-              <FaEnvelope className="text-red-600 text-xl" />
-              <p className="text-gray-700">support@bloodx.com</p>
+            <div className="flex items-center gap-3 ">
+              <FaEnvelope className="text-red-600  text-xl" />
+              <p className="text-gray-700 dark:text-white">support@bloodx.com</p>
             </div>
 
             <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-red-600 text-xl" />
-              <p className="text-gray-700">Dhaka, Bangladesh</p>
+              <p className="text-gray-700 dark:text-white">Dhaka, Bangladesh</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ const ContactSection = () => {
           <img
             src={contact}
             alt="contact us"
-            className="rounded-full shadow-xl w-full h-auto object-cover shadow-red-100"
+            className="rounded-full shadow-xl w-full h-auto object-cover shadow-red-100 dark:bg-gray-400"
           />
         </div>
       </div>

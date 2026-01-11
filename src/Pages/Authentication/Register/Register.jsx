@@ -89,7 +89,7 @@ const Register = () => {
   return (
     <div>
       <h1 className="text-6xl font-bold text-red-400 text-center my-10">Welcome, Register As a Donor</h1>
-      <div className=" mx-auto  card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl shadow-red-100">
+      <div className=" mx-auto  card bg-base-100 w-full max-w-sm shrink-0 shadow-sm shadow-red-100">
 
         <div className="card-body">
           <form onSubmit={handleSubmit(handleRegister)}>

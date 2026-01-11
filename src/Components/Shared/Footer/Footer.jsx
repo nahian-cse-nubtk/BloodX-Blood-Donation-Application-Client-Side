@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router";
-import Logo from '/LogoNoBG.png'
+import Logo from '/Logo.png'
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-red-50 shadow-xl mt-13 text-base-content rounded p-5">
+    <footer className="footer footer-horizontal footer-center bg-red-50 dark:bg-gray-700 shadow-xl mt-13 text-base-content rounded p-5">
       <div>
         <img src={Logo} alt="Logo of BloodX" className="h-15"/>
       </div>

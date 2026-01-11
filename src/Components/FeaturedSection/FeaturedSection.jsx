@@ -42,13 +42,13 @@ const FeaturedSection = () => {
   ];
 
   return (
-    <div className="py-16 bg-white">
+    <div className="py-16 ">
       {/* Section Title */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-red-600">
           Why Our Platform Best ?
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 dark:text-white mt-2">
           Designed to connect donors and patients with trust, safety, and care.
         </p>
       </div>
@@ -58,19 +58,19 @@ const FeaturedSection = () => {
         {features.map((item, index) => (
           <div
             key={index}
-            className="bg-white border border-red-200 rounded-xl shadow-md hover:shadow-xl hover:border-red-400 transition duration-300 p-6 text-center group"
+            className="bg-white dark:bg-gray-700 border border-red-200 dark:border-gray-200 rounded-xl shadow-md hover:shadow-xl hover:border-red-400 dark:hover:border-gray-400 transition duration-300 p-6 text-center group"
           >
             <div className="flex justify-center mb-4">
-              <div className="bg-red-50 p-4 rounded-full group-hover:bg-red-100 transition">
+              <div className="bg-red-50 p-4 rounded-full group-hover:bg-red-100 dark:group-hover:bg-gray-100 transition">
                 {item.icon}
               </div>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
               {item.title}
             </h3>
 
-            <p className="text-gray-600">{item.desc}</p>
+            <p className="text-gray-600 dark:text-white">{item.desc}</p>
           </div>
         ))}
       </div>

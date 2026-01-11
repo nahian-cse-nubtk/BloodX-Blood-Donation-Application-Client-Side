@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const DonationCard = ({ request }) => {
   return (
-    <div className="bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-red-200 rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transition-all duration-300 border border-red-200 rounded-2xl p-6 flex flex-col gap-4">
 
       {/* Header: Recipient */}
       <div className="flex items-center gap-3">
@@ -11,10 +11,10 @@ const DonationCard = ({ request }) => {
           <FaUser size={22} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-800">
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
             {request.recipientName}
           </h2>
-          <p className="text-sm text-gray-500">Recipient</p>
+          <p className="text-sm text-gray-500 dark:text-white">Recipient</p>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ const DonationCard = ({ request }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         {/* Location */}
-        <div className="flex items-center gap-3 text-gray-700">
+        <div className="flex items-center gap-3 text-gray-700 dark:text-white">
           <span className="bg-red-100 p-2 rounded-lg text-red-600">
             <FaMapMarkerAlt />
           </span>
@@ -42,7 +42,7 @@ const DonationCard = ({ request }) => {
         </div>
 
         {/* Date */}
-        <div className="flex items-center gap-3 text-gray-700">
+        <div className="flex items-center gap-3 text-gray-700 dark:text-white">
           <span className="bg-red-100 p-2 rounded-lg text-red-600">
             <FaCalendarAlt />
           </span>
@@ -50,7 +50,7 @@ const DonationCard = ({ request }) => {
         </div>
 
         {/* Time */}
-        <div className="flex items-center gap-3 text-gray-700">
+        <div className="flex items-center gap-3 text-gray-700 dark:text-white">
           <span className="bg-red-100 p-2 rounded-lg text-red-600">
             <FaClock />
           </span>

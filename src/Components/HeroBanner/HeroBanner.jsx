@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import slide1 from '/slide1.jpg'
-import slide2 from '/slide2.jpg'
-import slide3 from '/Slide3.jpg'
+import slide1 from '/slide1.png'
+import slide2 from '/slide2.png'
+import slide3 from '/Slide3.png'
 import { useNavigate } from "react-router";
 const images = [
   slide1,slide2,slide3
@@ -36,7 +36,7 @@ const HeroBanner = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-base-100 py-5 px-6 md:px-16 rounded-2xl my-3 shadow-xl shadow-red-100">
+    <div className="w-full overflow-hidden bg-base-100 py-5 px-6 md:px-16 rounded-2xl my-3 shadow-sm shadow-red-100 dark:shadow-gray-200">
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
 
@@ -54,7 +54,7 @@ const HeroBanner = () => {
                 {textContent[index].title}
               </h2>
 
-              <p className="mt-4 text-gray-600 max-w-md">
+              <p className="mt-4 text-gray-600 dark:text-white max-w-md">
                 {textContent[index].desc}
               </p>
 
@@ -93,7 +93,7 @@ const HeroBanner = () => {
               key={i}
               onClick={() => setIndex(i)}
               className={`h-3 w-3 rounded-full cursor-pointer transition-all ${
-                index === i ? "bg-red-600 scale-125" : "bg-gray-300"
+                index === i ? "bg-red-600 dark:bg-gray-400 scale-125" : "bg-gray-300"
               }`}
             ></div>
           ))}
