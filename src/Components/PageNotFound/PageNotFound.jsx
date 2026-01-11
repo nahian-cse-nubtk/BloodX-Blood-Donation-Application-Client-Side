@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import notfoundimage from '/404image.jpg'
+import notfoundimage from '/404image.png'
 const PageNotFound = () => {
     const navigate = useNavigate()
   return (

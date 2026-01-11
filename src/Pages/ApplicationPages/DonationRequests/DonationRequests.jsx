@@ -22,7 +22,7 @@ const DonationRequests = () => {
     return (
         <div>
             <h1 className='text-4xl text-center font-bold text-red-500 my-10'>All Donation Requests Here</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
                 {
                     requests.map(request=><DonationCard key={request._id} request={request}></DonationCard>)
                 }

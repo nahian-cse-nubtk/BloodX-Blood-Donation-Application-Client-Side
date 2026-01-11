@@ -60,14 +60,14 @@ const DonateFund = () => {
     <div className="py-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
       {recentFunds.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-xl p-6">
+        <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-6">
           <h2 className="text-2xl font-semibold mb-4">All Fund Donation</h2>
           <div className="flex justify-end mb-4">
             <button onClick={()=>paymentModalRef.current.showModal()} className="btn bg-red-500 text-white">Donate Fund</button>
           </div>
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-800">
                 <tr>
                   <th>Fund Doner</th>
                   <th>Donate Amount</th>
@@ -78,7 +78,7 @@ const DonateFund = () => {
 
               <tbody>
                 {recentFunds.map((fund) => (
-                  <tr key={fund._id} className="hover:bg-gray-50">
+                  <tr key={fund._id} className="hover:bg-gray-50 dark:hover:bg-gray-600">
                     {/* fund doner name */}
                     <td className="font-medium">{fund.donerName}</td>
 

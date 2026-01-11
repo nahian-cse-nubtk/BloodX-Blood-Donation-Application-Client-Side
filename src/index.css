@@ -11,6 +11,8 @@
 background-color: rgb(224, 49, 49);
   color:white;
   font-weight: 500;
+  border-radius: 5px;
+  
  }
  *{
   font-family: "Poppins", sans-serif;

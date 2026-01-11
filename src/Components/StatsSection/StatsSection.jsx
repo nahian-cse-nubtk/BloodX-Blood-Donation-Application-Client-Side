@@ -2,20 +2,20 @@ import { FaUsers, FaHandHoldingUsd, FaTint } from "react-icons/fa";
 
 const StatCard = ({ icon, title, value, color }) => (
   <div
-    className="p-6 bg-white rounded-xl shadow-sm border border-red-100
-               hover:shadow-lg hover:border-red-300 transition-all duration-300"
+    className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-red-100 dark:border-gray-900
+               hover:shadow-lg hover:border-red-300 dark:hover:border-gray-300 transition-all duration-300"
   >
     {/* Icon Circle */}
     <div
       className={`w-14 h-14 flex items-center justify-center rounded-full
-      bg-red-50 text-3xl ${color} mb-4 shadow-inner`}
+      bg-red-50 dark:bg-gray-800 text-3xl ${color} mb-4 shadow-inner`}
     >
       {icon}
     </div>
 
-    <h2 className="text-4xl font-bold text-gray-900">{value}</h2>
+    <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{value}</h2>
 
-    <p className="text-gray-500 text-lg font-medium mt-1">{title}</p>
+    <p className="text-gray-500 dark:text-white/50 text-lg font-medium mt-1">{title}</p>
   </div>
 );
 

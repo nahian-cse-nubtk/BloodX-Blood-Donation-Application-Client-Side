@@ -19,12 +19,12 @@ const AdminHomepage = () => {
     if(isPending){
       return <Loading></Loading>
     }
-    
+
     return (
       <div className="p-6 space-y-8">
 
       {/* ------------------ WELCOME CARD ------------------ */}
-      <div className="bg-linear-to-r from-red-500 to-red-700 text-white p-8 rounded-2xl shadow-lg">
+      <div className="bg-linear-to-r from-red-500 to-red-700 dark:from-gray-600 dark:to-gray-800 text-white p-8 rounded-2xl shadow-lg">
         <h1 className="text-3xl font-bold">Welcome, {user?.displayName} 👋</h1>
         <p className="text-white/90 mt-1">Glad to see you back. Stay ready to save lives!</p>
       </div>

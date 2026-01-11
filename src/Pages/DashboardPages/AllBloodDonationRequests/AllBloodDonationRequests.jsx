@@ -60,7 +60,7 @@ const AllBloodDonationRequests = () => {
     <div className="p-6 space-y-8">
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
       {recentRequests.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-xl p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
           <h2 className="text-xl font-semibold mb-4">All Donation Requests</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
@@ -100,7 +100,7 @@ const AllBloodDonationRequests = () => {
           </div>
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
                   <th>Recipient</th>
                   <th>Location</th>
@@ -116,7 +116,7 @@ const AllBloodDonationRequests = () => {
 
               <tbody>
                 {recentRequests.map((req) => (
-                  <tr key={req._id} className="hover:bg-gray-50">
+                  <tr key={req._id} className="hover:bg-gray-50 dark:hover:bg-gray-600">
                     {/* Recipient */}
                     <td className="font-medium">{req.recipientName}</td>
 

@@ -65,7 +65,7 @@ const DonationDetails = () => {
     return <Loading></Loading>
   }
   return (
-    <div className="relative max-w-4xl mx-auto p-6 my-10 bg-white shadow-xl rounded-2xl border border-red-200">
+    <div className="relative max-w-4xl mx-auto p-6 my-10 bg-white dark:bg-gray-700 shadow-xl rounded-2xl border border-red-200">
       <button
         disabled={request.donationStatus === "inprogress"}
         onClick={() => modalRef.current.showModal()}
@@ -80,10 +80,10 @@ const DonationDetails = () => {
           <FaUser size={28} />
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
             {request.recipientName}
           </h1>
-          <p className="text-gray-500 text-sm">Donation Request Details</p>
+          <p className="text-gray-500 dark:text-white text-sm">Donation Request Details</p>
         </div>
       </div>
 
@@ -138,11 +138,11 @@ const DonationDetails = () => {
       <div className="h-px w-full bg-red-100 my-6"></div>
 
       {/* MESSAGE */}
-      <div className="bg-red-50 p-5 rounded-xl border border-red-200">
+      <div className="bg-red-50 dark:bg-gray-600 p-5 rounded-xl border border-red-200">
         <h3 className="text-lg font-semibold text-red-700 flex items-center gap-2 mb-2">
           <FaRegCommentDots /> Request Message
         </h3>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700  leading-relaxed">
           {request.requestMessage}
         </p>
       </div>

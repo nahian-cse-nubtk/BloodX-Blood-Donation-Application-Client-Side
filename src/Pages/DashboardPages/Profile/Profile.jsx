@@ -80,14 +80,14 @@ useEffect(() => {
   return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* LEFT CARD */}
-      <div className="bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg p-6 flex flex-col items-center shadow-red-100">
+      <div className="bg-white/40 dark:bg-gray-800 backdrop-blur-xl rounded-2xl shadow-sm p-6 flex flex-col items-center shadow-red-100 dark:shadow-white">
         <img
           src={userData.Image}
           className="w-32 h-32 rounded-full border-4 border-white shadow-md"
         />
 
         <h2 className="text-xl font-semibold mt-4">{userData.name}</h2>
-        <p className="text-gray-500 text-sm">{userData.email}</p>
+        <p className="text-gray-500 dark:text-white text-sm">{userData.email}</p>
 
         <div className="mt-4 space-y-2 w-full text-center">
           <p className="font-medium">Blood: <span className="text-red-600 font-bold">{userData.bloodGroup}</span></p>
@@ -99,7 +99,7 @@ useEffect(() => {
       </div>
 
       {/* RIGHT FORM CARD */}
-      <div className="md:col-span-2 bg-white rounded-2xl shadow-xl p-6 shadow-red-100">
+      <div className="md:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 shadow-red-100">
         <div className="flex justify-between items-center mb-5">
           <h3 className="text-2xl font-semibold">Profile Information</h3>
 
@@ -131,7 +131,7 @@ useEffect(() => {
             <input
               {...register("email")}
               disabled
-              className="input input-bordered w-full bg-gray-100"
+              className="input input-bordered w-full "
             />
           </div>
 

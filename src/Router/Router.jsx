@@ -26,6 +26,8 @@ import Loading from '../Components/Loading/Loading';
 import DonateFund from '../Pages/ApplicationPages/DonateFund/DonateFund';
 import PaymentSuccess from '../Pages/ApplicationPages/Payment/PaymentSuccess';
 import PaymentCancel from '../Pages/ApplicationPages/Payment/PaymentCancel/PaymentCancel';
+import Contact from '../Components/Contact/Contact';
+import About from '../Components/About/About';
 
 
 const Router = createBrowserRouter([
@@ -66,6 +68,15 @@ const Router = createBrowserRouter([
             {
                 path:'/paymentCancel',
                 Component: PaymentCancel
+            },
+            {
+                path:'/contact',
+                Component: Contact
+
+            },
+            {
+                path:'/about',
+                Component: About
             }
         ]
     },

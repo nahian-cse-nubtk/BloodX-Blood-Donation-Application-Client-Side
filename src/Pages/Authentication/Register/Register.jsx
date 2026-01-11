@@ -1,20 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useLoaderData, useLocation, useNavigate,Link } from "react-router";
+import { useLoaderData, useLocation, useNavigate, Link } from "react-router";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 
-
-
 const Register = () => {
-    const navigate = useNavigate()
-    const location = useLocation()
-    const axiosSecure =useAxiosSecure()
-    const [error, setError] =useState('')
+  const navigate = useNavigate();
+  const location = useLocation();
+  const axiosSecure = useAxiosSecure();
+  const [error, setError] = useState("");
 
-    const {createUser,updateUser} =useAuth()
+  const { createUser, updateUser } = useAuth();
   const { districts, upzillas } = useLoaderData();
   // console.log(districts,upzillas);
   const allDistrictName = districts.map((d) => d.name);
@@ -38,59 +36,54 @@ const Register = () => {
     }
   };
   const handleRegister = (data) => {
+    const email = data.email;
+    const password = data.password;
+    createUser(email, password).then((result) => {
+      if (result.user) {
+        toast("Registration successfull");
+        navigate(location.state || "/");
 
-     const email = data.email;
-     const password = data.password;
-     createUser(email,password)
-     .then(result=>{
-        if(result.user){
-     toast("Registration successfull")
-     navigate(location.state || '/')
+        const profileImage = data.Image[0];
+        const formData = new FormData();
+        formData.append("image", profileImage);
+        const image_api_url = `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMAGEBB_API_KEY
+        }`;
 
-    const profileImage = data.Image[0]
-    const formData = new FormData()
-    formData.append('image',profileImage)
-    const image_api_url =`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGEBB_API_KEY}`
-
-    axios.post(image_api_url,formData)
-    .then(res=>{
-        const profile ={
-            displayName: data.Name,
-            photoURL: res.data.data.url
-        }
-        updateUser(profile)
-        .then(()=>{
-            const userData ={
+        axios
+          .post(image_api_url, formData)
+          .then((res) => {
+            const profile = {
+              displayName: data.Name,
+              photoURL: res.data.data.url,
+            };
+            updateUser(profile).then(() => {
+              const userData = {
                 name: data.Name,
                 email: data.email,
                 Image: res.data.data.url,
                 bloodGroup: data.bloodGroup,
                 district: data.district,
-                upzilla: data.upzilla
-            }
-        axiosSecure.post('/users',userData)
-        .then(res=>{
-            //console.log(res.data)
-        })
-        })
-
-    })
-    .catch(err=>{
-      setError(err)
-
-    })
-
-        }
-     })
-
-
+                upzilla: data.upzilla,
+              };
+              axiosSecure.post("/users", userData).then((res) => {
+                //console.log(res.data)
+              });
+            });
+          })
+          .catch((err) => {
+            setError(err);
+          });
+      }
+    });
   };
 
   return (
     <div>
-      <h1 className="text-6xl font-bold text-red-400 text-center my-10">Welcome, Register As a Donor</h1>
+      <h1 className="text-6xl font-bold text-red-400 text-center my-10">
+        Welcome, Register As a Donor
+      </h1>
       <div className=" mx-auto  card bg-base-100 w-full max-w-sm shrink-0 shadow-sm shadow-red-100">
-
         <div className="card-body">
           <form onSubmit={handleSubmit(handleRegister)}>
             <fieldset className="fieldset">
@@ -204,26 +197,29 @@ const Register = () => {
               )}
               <label className="label">Upload your image</label>
               <input
-                {...register("Image",{required: "You must need to upload an image"})}
+                {...register("Image", {
+                  required: "You must need to upload an image",
+                })}
                 type="file"
                 className="file-input file-input-ghost"
               />
-              {
-                errors.Image&& <p className="text-red-400">
-                  {errors.Image.message}
-                </p>
-              }
-              {
-                error&&<p className="text-red-400">
-                  {error}
-                </p>
+              {errors.Image && (
+                <p className="text-red-400">{errors.Image.message}</p>
+              )}
+              {error && <p className="text-red-400">{error}</p>}
 
-              }
-
-              <button type="submit" className="btn bg-red-600 text-white mt-4">Register</button>
+              <button type="submit" className="btn bg-red-600 text-white mt-4">
+                Register
+              </button>
+             
             </fieldset>
           </form>
-          <p>Already have an account? <Link to='/authLayout'><span className="text-red-400 underline">Login</span></Link></p>
+          <p>
+            Already have an account?{" "}
+            <Link to="/authLayout">
+              <span className="text-red-400 underline">Login</span>
+            </Link>
+          </p>
         </div>
       </div>
     </div>

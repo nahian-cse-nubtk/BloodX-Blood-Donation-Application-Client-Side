@@ -68,7 +68,7 @@ const DonorHomePage = () => {
   return (
     <div className="p-6 space-y-8">
       {/* ------------------ WELCOME CARD ------------------ */}
-      <div className="bg-linear-to-r from-red-500 to-red-700 text-white p-8 rounded-2xl shadow-lg">
+      <div className="bg-linear-to-r from-red-500 to-red-700 dark:from-gray-600 dark:to-gray-800 text-white p-8 rounded-2xl shadow-lg">
         <h1 className="text-3xl font-bold">Welcome, {user?.displayName} 👋</h1>
         <p className="text-white/90 mt-1">
           Glad to see you back. Stay ready to save lives!
@@ -77,14 +77,14 @@ const DonorHomePage = () => {
 
       {/* ------------------ RECENT REQUESTS SECTION ------------------ */}
       {recentRequests.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-xl p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
           <h2 className="text-xl font-semibold mb-4">
             Your Recent Donation Requests
           </h2>
 
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-600">
                 <tr>
                   <th>Recipient</th>
                   <th>Location</th>
@@ -99,7 +99,7 @@ const DonorHomePage = () => {
 
               <tbody>
                 {recentRequests.map((req) => (
-                  <tr key={req._id} className="hover:bg-gray-50">
+                  <tr key={req._id} className="hover:bg-gray-50 dark:hover:bg-gray-600">
                     {/* Recipient */}
                     <td className="font-medium">{req.recipientName}</td>
 

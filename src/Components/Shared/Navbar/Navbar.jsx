@@ -16,22 +16,27 @@ const Navbar = () => {
   }
   const links = (
     <>
-      <li className="hover:bg-red-500">
+      <li className="hover:bg-red-500 rounded-sm">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="hover:bg-red-500">
+      <li className="hover:bg-red-500 rounded-sm">
         <NavLink to="/requests">All Request</NavLink>
       </li>
-      <li className="hover:bg-red-500">
+      <li className="hover:bg-red-500 rounded-sm">
         <NavLink to="/searchDonor">
           <IoSearch />
           Search Donor
         </NavLink>
       </li>
       {user && (
-        <li className="hover:bg-red-500">
+        <div>
+        <li className="hover:bg-red-500 rounded-sm">
           <NavLink to="/donateFund">Donate Fund</NavLink>
         </li>
+        <li className="hover:bg-red-500 rounded-sm">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+        </div>
       )}
     </>
   );
@@ -41,7 +46,7 @@ const Navbar = () => {
     });
   };
   return (
-    <div className="navbar bg-base-100 dark:bg-gray-700 shadow-sm md:px-7">
+    <div className="navbar sticky top-0 z-50 bg-base-100 dark:bg-gray-700 shadow-sm md:px-7">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -121,7 +126,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex="-1"
-                  className="dropdown-content menu bg-red-600 text-white font-bold rounded-box z-1 w-52 p-2 shadow-sm"
+                  className="dropdown-content menu bg-red-600 dark:bg-gray-700 text-white font-bold rounded-box z-1 w-52 p-2 shadow-sm"
                 >
                   <li>
                     <button onClick={handleSignOut}>Sign Out</button>
@@ -134,11 +139,11 @@ const Navbar = () => {
             </div>
           ) : (
             <div>
-              <Link className="btn bg-red-500 text-white mr-3" to="/authLayout">
+              <Link className="btn bg-red-500  text-white mr-3" to="/authLayout">
                 Login
               </Link>
               <Link
-                className="btn bg-red-500 text-white"
+                className="btn bg-red-500  text-white"
                 to="/authLayout/register"
               >
                 Register

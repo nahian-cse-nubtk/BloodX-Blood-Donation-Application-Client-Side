@@ -84,7 +84,7 @@ const AllUsers = () => {
       )}
       {/* all users */}
       {recentUsers.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-xl p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
           <h2 className="text-2xl font-semibold mb-4">All Users</h2>
           <div className="flex justify-end my-4">
             <div className="dropdown dropdown-end">
@@ -110,7 +110,7 @@ const AllUsers = () => {
           </div>
           <div className="overflow-x-auto rounded-xl border">
             <table className="table w-full">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-600">
                 <tr>
                   <th>User Avatar</th>
                   <th>User Name</th>
@@ -124,7 +124,7 @@ const AllUsers = () => {
 
               <tbody>
                 {recentUsers.map((user) => (
-                  <tr key={user._id} className="hover:bg-gray-50">
+                  <tr key={user._id} className="hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td>
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
