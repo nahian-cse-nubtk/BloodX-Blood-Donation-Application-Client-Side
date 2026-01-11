@@ -29,14 +29,14 @@ const Navbar = () => {
         </NavLink>
       </li>
       {user && (
-        <div>
+        <>
         <li className="hover:bg-red-500 rounded-sm">
           <NavLink to="/donateFund">Donate Fund</NavLink>
         </li>
         <li className="hover:bg-red-500 rounded-sm">
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
-        </div>
+        </>
       )}
     </>
   );
