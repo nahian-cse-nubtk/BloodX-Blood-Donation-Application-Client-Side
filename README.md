@@ -1,186 +1,161 @@
-🚀 Application Name: BloodX – Blood Donation Application
+# 🚀 BloodX – Blood Donation Application
 
-🔗 Live Project Link: [https://bloodx-82248.web.app]
+🔗 **Live Project Link:** [https://bloodx-82248.web.app](https://bloodx-82248.web.app)
 
-🩸 Overview
+---
 
-BloodX is a modern, full-stack blood donation management platform designed to connect donors, volunteers, and administrators in an efficient and transparent ecosystem.
-This application showcases real-world system design, secure authentication, role-based dashboards, Stripe-powered donation handling, and fully dynamic request management.
+## 🩸 Overview
 
-It was built as part of a professional skill-assessment project to evaluate problem-solving, system structuring, and UI/UX decision-making.
+**BloodX** is a modern, full-stack **blood donation management platform** designed to connect donors, volunteers, and administrators in an efficient and transparent ecosystem.
 
-🎯 Key Features
+This application showcases **real-world system design**, **secure authentication**, **role-based dashboards**, **Stripe-powered donation handling**, and fully dynamic **request management**.
 
-🔐 Authentication & Authorization
+It was built as part of a **professional skill-assessment project** to evaluate problem-solving, system structuring, and UI/UX decision-making.
 
-Firebase Authentication (Email/Password & Token Management)
+---
 
-Backend JWT Verification (Firebase Admin SDK)
+## 🎯 Key Features
 
-Role-Based Access: Donor, Volunteer, Admin
+### 🔐 Authentication & Authorization
 
-Protected Routes (Frontend + Backend)
+* Firebase Authentication (Email/Password & Token Management)
+* Backend JWT Verification (Firebase Admin SDK)
+* Role-Based Access: Donor, Volunteer, Admin
+* Protected Routes (Frontend + Backend)
 
-🧑‍💻 Donor Features
+### 🧑‍💻 Donor Features
 
-Update profile information
+* Update profile information
+* Create blood donation requests
+* Manage personal donation requests
+* Donate funds using Stripe Payment Integration
+* View donation request details
 
-Create blood donation requests
+### 🤝 Volunteer Features
 
-Manage personal donation requests
+* Access volunteer dashboard
+* View user, funding & donation statistics
+* Manage donation request statuses (Approve / Receiving / Ongoing / Delivered)
 
-Donate funds using Stripe Payment Integration
+### 🛠️ Admin Features
 
-View donation donation request details
+* Complete admin dashboard
+* Manage all users (role update, block/unblock)
+* Manage all donation requests
+* View detailed platform statistics
+* Update admin profile
 
-🤝 Volunteer Features
+### 📊 Dashboard Statistics
 
-Access volunteer dashboard
+All dashboards show **dynamic, real-time stats** using **TanStack Query**:
 
-View user, funding & donation statistics
+* Total Donors
+* Total Funds Collected
+* Total Blood Donation Requests
+* Volunteer progress overview
+* Admin-level system insights
 
-Manage donation request statuses (Approve/Receiving/Ongoing/Delivered)
+### 💳 Fund Donation System
 
-🛠️ Admin Features
+* Stripe Checkout Session integrated in backend (Node + Express)
+* Secure payment workflow
+* Metadata storage for tracking
+* Automatically generated:
 
-Complete admin dashboard
+  * Transaction ID
+  * Tracking ID
+* Payment Success → Data saved to database & displayed to user
 
-Manage all users (role update, block/unblock)
+### 🧩 Pagination & Filtering
 
-Manage all donation requests
+* Pagination implemented for donation requests list
+* Donors can filter by:
 
-View detailed platform statistics
+  * District
+  * Upazila
+  * Blood Group
 
-Update admin profile
+---
 
-📊 Dashboard Statistics
+## 🛠️ Tech Stack
 
-All dashboards show dynamic, real-time stats using TanStack Query:
+**Frontend:**
 
-Total Donors
+* React.js
+* React Router
+* React Hook Form
+* TanStack Query
+* Axios
+* React Icons
+* Tailwind CSS
+* SweetAlert2
 
-Total Funds Collected
+**Backend:**
 
-Total Blood Donation Requests
+* Node.js
+* Express.js
+* MongoDB
+* Firebase Admin SDK (JWT verification)
 
-Volunteer progress overview
+**Tools:**
 
-Admin-level system insights
+* Stripe Payment Gateway
 
-💳 Fund Donation System
+**Hosting:**
 
-Stripe Checkout Session integrated in backend (Node + Express)
+* Firebase Hosting (Frontend hosting)
+* Vercel (Backend hosting)
 
-Secure payment workflow
+---
 
-Metadata storage for tracking
+## 🧪 Why This Project Stands Out
 
-Automatically generated:
+* Clean and scalable architecture
+* Highly secure authentication & role control
+* Real-world donation workflow implementation
+* Stripe fund donation system
+* Three separate dashboards
+* Professional-level UI/UX with responsiveness
+* Clear separation of frontend & backend responsibilities
+* Industry-standard packages (React Query, JWT, Firebase Admin, Axios Interceptors)
 
-Transaction ID
+---
 
-Tracking ID
+## 🟢 Installation & Setup
 
-Payment Success → Data saved to database & displayed to user
+### Frontend
 
-🧩 Pagination & Filtering
-
-Pagination implemented for donation requests list
-
-Donors can filter by:
-
-District
-
-Upazila
-
-Blood Group
-
-🛠️ Tech Stack
-
-Frontend:
-
-React.js
-
-React Router
-
-React Hook Form
-
-TanStack Query
-
-Axios
-
-React Icons
-
-Tailwind CSS
-
-SweetAlert2
-
-Backend:
-
-Node.js
-
-Express.js
-
-MongoDB
-
-Firebase Admin SDK (JWT verification)
-
-Tools
-
-Stripe Payment Gateway
-
-Hosting:
-
-Firebase Hosting (Frontend hosting)
-
-Vercel (Backend hosting)
-
-
-
-🧪 Why This Project Stands Out
-
-Clean and scalable architecture
-
-Highly secure authentication & role control
-
-Real-world donation workflow implementation
-
-Stripe fund donation system
-
-Three separate dashboards
-
-Professional-level UI/UX with responsiveness
-
-Clear separation of frontend & backend responsibilities
-
-Industry-standard packages (React Query, JWT, Firebase Admin, Axios Interceptors)
-
-🟢 Installation & Setup
-Frontend
+```bash
 cd client
 npm install
 npm run dev
+```
 
-Backend
+### Backend
+
+```bash
 cd server
 npm install
 npm start
+```
 
+### Environment Variables Needed
 
-Environment variables needed:
-
+```env
 FIREBASE_ADMIN_SERVICE_ACCOUNT=
-
 MONGODB_URI=
-
 STRIPE_SECRET_KEY=
-
 SITE_DOMAIN=
+```
 
-🤝 Contributors
+---
 
-Developed by Shaikh Al Nahian, MERN Stack Developer
+## 🤝 Contributors
 
-📌 License
+Developed by **Shaikh Al Nahian**, MERN Stack Developer
 
-This project is for practice purposes.
+---
+
+## 📌 License
+
+This project is for **practice purposes**.
