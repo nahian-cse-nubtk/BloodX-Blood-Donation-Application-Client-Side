@@ -93,7 +93,7 @@ const DonationRequestEdit = () =>{
   }
   return (
     <div className="p-6">
-      <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl shadow-xl rounded-2xl p-8 border border-red-50">
+      <div className="max-w-4xl mx-auto bg-white/60 dark:bg-gray-700 backdrop-blur-xl shadow-xl rounded-2xl p-8 border border-red-50">
 
         {/* TITLE */}
         <h2 className="text-3xl font-bold text-red-600 mb-6 text-center">
@@ -108,7 +108,7 @@ const DonationRequestEdit = () =>{
             <input
               {...register("requesterName")}
               readOnly
-              className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+              className="input input-bordered w-full bg-gray-100 dark:bg-gray-800 cursor-not-allowed"
             />
           </div>
 
@@ -118,7 +118,7 @@ const DonationRequestEdit = () =>{
             <input
               {...register("requesterEmail")}
               readOnly
-              className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+              className="input input-bordered w-full bg-gray-100 dark:bg-gray-800 cursor-not-allowed"
             />
           </div>
 

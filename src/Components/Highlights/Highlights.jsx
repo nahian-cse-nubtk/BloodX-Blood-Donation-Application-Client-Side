@@ -30,7 +30,7 @@ const Highlights = () => {
   ];
 
   return (
-    <section className=" py-10 px-4">
+    <section className=" pb-10 pt-16 px-4">
       <div className="max-w-7xl mx-auto text-center">
         {/* Header */}
         <div className="mb-12">

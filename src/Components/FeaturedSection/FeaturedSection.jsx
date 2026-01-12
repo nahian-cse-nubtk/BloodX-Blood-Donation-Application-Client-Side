@@ -42,13 +42,13 @@ const FeaturedSection = () => {
   ];
 
   return (
-    <div className="py-16 ">
+    <div className="pb-16 pt-10 ">
       {/* Section Title */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-red-600">
+        <h2 className="text-3xl md:text-5xl font-bold text-red-500">
           Why Our Platform Best ?
         </h2>
-        <p className="text-gray-600 dark:text-white mt-2">
+        <p className="text-gray-600 dark:text-white/50 pt-5 ">
           Designed to connect donors and patients with trust, safety, and care.
         </p>
       </div>

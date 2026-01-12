@@ -1,5 +1,5 @@
 import React from 'react';
-import accessDenied from '/accessDenied.jpg'
+import accessDenied from '/accessDenied.png'
 import { useNavigate } from 'react-router';
 const ForbiddenAccess = () => {
     const navigate = useNavigate()

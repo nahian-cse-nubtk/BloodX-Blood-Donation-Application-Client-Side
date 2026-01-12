@@ -5,7 +5,7 @@ const ContactSection = () => {
     <div className="py-3 ">
       {/* Section Title */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-red-600 ">
+        <h2 className="text-3xl md:text-5xl font-bold text-red-600 ">
           Contact Us
         </h2>
         <p className="text-gray-600 dark:text-white mt-2">

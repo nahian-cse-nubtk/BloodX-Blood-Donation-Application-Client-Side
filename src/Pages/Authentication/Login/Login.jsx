@@ -20,11 +20,11 @@ const Login = () => {
   const demoAccounts = {
     donor: {
       email: "nahians@gmail.com",
-      password: "12345678aA",
+      password: "12345678aA@",
     },
     volunteer: {
       email: "saiful@gmail.com",
-      password: "1234568aA@",
+      password: "12345678aA@",
     },
     admin: {
       email: "admin@bloodx.com",
