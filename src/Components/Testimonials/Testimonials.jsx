@@ -54,7 +54,7 @@ const Testimonials = () => {
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="card bg-base-200 shadow-md hover:shadow-xl transition duration-300"
+              className="card bg-base-200 shadow-md hover:shadow-xl dark:shadow-white transition duration-300"
             >
               <div className="card-body">
                 <FaQuoteLeft className="text-3xl text-red-400 mb-4" />
@@ -94,7 +94,7 @@ const Testimonials = () => {
           ))}
         </div>
 
-      
+
       </div>
     </section>
   );

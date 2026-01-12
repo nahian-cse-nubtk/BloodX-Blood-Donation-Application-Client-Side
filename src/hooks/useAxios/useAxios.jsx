@@ -3,8 +3,9 @@ import React from 'react';
 
 
 const instance  = axios.create({
-    baseURL: 'https://bloodx-blood-donation-applicaion.vercel.app'
+    baseURL: 'http://localhost:4000'
 })
+// https://bloodx-blood-donation-applicaion.vercel.app
 const useAxios = () => {
 
     return instance;
