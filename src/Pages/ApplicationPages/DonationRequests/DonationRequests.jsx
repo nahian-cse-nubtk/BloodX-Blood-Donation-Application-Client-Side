@@ -10,10 +10,10 @@ const DonationRequests = () => {
   const [page, setPage] = useState(0);
   const [searchText, setSearchText] = useState('')
   const { data: requests = {}, isPending } = useQuery({
-    queryKey: ["requests", "donationStatus", page],
+    queryKey: ["requests", "donationStatus", page,searchText],
     queryFn: async () => {
       const res = await axios.get(
-        `donationRequest/public?donationStatus=pending&limit=8&skip=${page * 8}`
+        `donationRequest/public?donationStatus=pending&limit=8&skip=${page * 8}&searchText=${searchText}`
       );
       return res.data;
     },
@@ -52,16 +52,22 @@ const DonationRequests = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input onChange={handleSearch} type="search" name='search' required placeholder="Search By Receipant Name" />
+          <input onChange={handleSearch} type="search" name='search' required placeholder="Search By Recipient Name" />
         </label>
       </div>
+      <div>
+        {requests.result.length===0&&<div>
+            <h1 className="text-3xl font-bold text-red-400 text-center">Opps!! Recpient Not Found</h1>
+            </div>}
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {requests.result.map((request) => (
+        {requests.result.length>0 && requests.result.map((request) => (
           <DonationCard key={request._id} request={request}></DonationCard>
         ))}
       </div>
       <div className="mt-7">
-        <div className=" text-right flex justify-center">
+        {
+            requests.result.length>0&&<div className=" text-right flex justify-center">
           <button
             disabled={page === 0}
             onClick={() => setPage((p) => Math.max(p - 1, 0))}
@@ -77,6 +83,7 @@ const DonationRequests = () => {
             Next
           </button>
         </div>
+        }
       </div>
     </div>
   );
